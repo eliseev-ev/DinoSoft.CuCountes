@@ -1,0 +1,29 @@
+﻿@page "/Counters"
+@using DinoSoft.CuCounters.Domain.Model
+@using DinoSoft.CuCounters.Domain.Infrastructure
+
+<LayoutView>
+<ol class="list-group main-bg">
+@foreach (var counter in mainData.Counters)
+{
+  <li class="list-group-item d-flex justify-content-between align-items-start main-bg">
+	  <CounterElement Model=counter/>
+  </li>
+}
+</ol>
+
+
+
+</LayoutView>
+
+
+
+@code {
+	private MainData mainData;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var mainDataManager = new MainDataManager();
+		mainData = mainDataManager.Get();
+	}
+}

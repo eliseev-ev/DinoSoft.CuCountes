@@ -1,0 +1,33 @@
+﻿@using DinoSoft.CuCounters.Domain.Model
+
+<div class="container text-white main-bg">
+  <div class="row">
+    <div class="col-2 text-center align-middle">
+      <h1><span class="badge bg-secondary">@Model.Value</span></h1>
+    </div>
+    <div class="col">
+      <div class="fw-bold">@Model.Name</div>
+    </div>
+    <div class="col">
+      @foreach (var counterAction in Model.CounterAction)
+      {
+        <button class="btn btn-primary" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
+      }
+    </div>
+    <div class="col text-right align-top">
+      @Model.LastUpdated?.ToString("t")
+    </div>
+  </div>
+
+</div>
+
+@code {
+	// Demonstrates how a parent component can supply parameters
+	[Parameter]
+	public Counter Model { get; set; }
+
+	private void ActCount(Guid actId)
+	{
+        Model.Act(actId);
+	}
+}
