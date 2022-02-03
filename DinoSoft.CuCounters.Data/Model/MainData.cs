@@ -2,7 +2,11 @@
 {
     public class MainData
     {
-        int sortOrder = 0;
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+
+        private int sortOrder = 0;
+
         public IList<Counter> Counters => new List<Counter>()
         {
             new Counter()

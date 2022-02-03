@@ -1,6 +1,7 @@
 ﻿@page "/Counters"
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
+@inject MainDataManager mainDataManager
 
 <LayoutView>
 <ol class="list-group d-flex justify-content-between ">
@@ -20,7 +21,6 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		var mainDataManager = new MainDataManager();
 		mainData = mainDataManager.Get();
 	}
 }

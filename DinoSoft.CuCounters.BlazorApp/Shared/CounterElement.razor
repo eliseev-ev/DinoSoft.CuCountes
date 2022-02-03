@@ -11,19 +11,18 @@
     </div>
   </div>
 
-
   <div class="row">
     <div class="col justify-content-start align-middle text-left">
       <h1 class="btn btn-lg btn-outline-light">@Model.Value</h1>
     </div>
     <div class="col align-middle justify-content-end align-self-center">
+    @*  <CounterButtonsElement Model="Model"/>*@
       @foreach (var counterAction in Model.CounterAction)
       {
         <button class="btn btn-outline-light align-middle" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
       }
     </div>
   </div>
-
 </div>
 
 @code {

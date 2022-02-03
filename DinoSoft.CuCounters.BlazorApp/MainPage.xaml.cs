@@ -1,4 +1,5 @@
-﻿namespace DinoSoft.CuCounters.BlazorApp
+﻿
+namespace DinoSoft.CuCounters.BlazorApp
 {
     public partial class MainPage : ContentPage
     {

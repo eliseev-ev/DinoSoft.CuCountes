@@ -1,0 +1,19 @@
+﻿@using DinoSoft.CuCounters.Domain.Model
+
+<div class="align-middle justify-content-end align-self-center">
+  @foreach (var counterAction in Model.CounterAction)
+  {
+    <button class="btn btn-outline-light align-middle" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
+  }
+</div>
+
+@code {
+	// Demonstrates how a parent component can supply parameters
+	[Parameter]
+	public Counter Model { get; set; }
+
+	private void ActCount(Guid actId)
+	{
+        Model.Act(actId);
+	}
+}
