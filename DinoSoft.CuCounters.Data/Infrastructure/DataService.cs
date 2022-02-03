@@ -1,17 +1,12 @@
-﻿using DinoSoft.CuCounters.Data.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+using DinoSoft.CuCounters.Data.Model;
 
-namespace DinoSoft.CuCounters.Data.Repository
+namespace DinoSoft.CuCounters.Data.Infrastructure
 {
-    public class DataRepository
+    public class DataService
     {
         private readonly string fileName;
-        public DataRepository()
+        public DataService()
         {
             fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "db");
         }

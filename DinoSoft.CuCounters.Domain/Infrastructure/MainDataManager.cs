@@ -1,22 +1,21 @@
-﻿using DinoSoft.CuCounters.Data.Repository;
+﻿using DinoSoft.CuCounters.Data.Infrastructure;
 using DinoSoft.CuCounters.Domain.Model;
 
 namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
     public class MainDataManager
     {
-        private readonly DataRepository mainRepository;
-
+        private readonly DataService dataService;
         private Data.Model.MainData currentMainData;
 
-        public MainDataManager()
+        public MainDataManager(DataService dataService)
         {
-            this.mainRepository = new DataRepository();
+            this.dataService = dataService;
         }
 
         public MainData Get()
         {
-            currentMainData = mainRepository.GetMainData();
+            currentMainData = dataService.GetMainData();
             return new MainData(currentMainData);
         }
 
@@ -24,7 +23,7 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
         {
             if (currentMainData != null)
             {
-                mainRepository.SaveMainData(currentMainData);
+                dataService.SaveMainData(currentMainData);
             }
         }
     }

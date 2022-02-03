@@ -9,11 +9,11 @@ namespace DinoSoft.CuCounters.Domain.Model
 {
     public class MainData
     {
-        public List<Counter> Counters { get; }
+        public IEnumerable<Counter> Counters { get; }
         
         public MainData(Data.Model.MainData mainData)
         {
-            this.Counters = mainData.Counters.Select(x => new Counter(x)).ToList();
+            this.Counters = mainData.Counters.Select(x => new Counter(x));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿@using DinoSoft.CuCounters.Domain.Model
+﻿@using DinoSoft.CuCounters.BlazorApp.Pages
+@using DinoSoft.CuCounters.Domain.Model
+@inject IRefreshService refreshService
 
 <div class="container list-group-item text-white main-bg shadow">
 
@@ -16,22 +18,27 @@
       <h1 class="btn btn-lg btn-outline-light">@Model.Value</h1>
     </div>
     <div class="col align-middle justify-content-end align-self-center">
-    @*  <CounterButtonsElement Model="Model"/>*@
-      @foreach (var counterAction in Model.CounterAction)
+      <CounterButtonsElement Model="Model"/>
+@*      @foreach (var counterAction in Model.CounterAction)
       {
         <button class="btn btn-outline-light align-middle" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
-      }
+      }*@
     </div>
   </div>
 </div>
 
 @code {
-	// Demonstrates how a parent component can supply parameters
-	[Parameter]
-	public Counter Model { get; set; }
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public Counter Model { get; set; }
 
-	private void ActCount(Guid actId)
+    protected override async Task OnInitializedAsync()
 	{
-        Model.Act(actId);
+        refreshService.Add(this.GetType(), StateHasChanged);
 	}
+
+    private void ActCount(Guid actId)
+    {
+        Model.Act(actId);
+    }
 }

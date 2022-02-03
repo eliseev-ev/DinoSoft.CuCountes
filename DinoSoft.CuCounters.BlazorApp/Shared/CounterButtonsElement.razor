@@ -1,4 +1,5 @@
 ﻿@using DinoSoft.CuCounters.Domain.Model
+@inject IRefreshService refreshService
 
 <div class="align-middle justify-content-end align-self-center">
   @foreach (var counterAction in Model.CounterAction)
@@ -15,5 +16,6 @@
 	private void ActCount(Guid actId)
 	{
         Model.Act(actId);
+		refreshService.RequestRefresh(typeof(CounterElement));
 	}
 }
