@@ -1,6 +1,5 @@
 ﻿@using DinoSoft.CuCounters.BlazorApp.Pages
 @using DinoSoft.CuCounters.Domain.Model
-@inject IRefreshService refreshService
 
 <div class="container list-group-item text-white main-bg shadow">
 
@@ -18,7 +17,7 @@
       <h1 class="btn btn-lg btn-outline-light">@Model.Value</h1>
     </div>
     <div class="col align-middle justify-content-end align-self-center">
-      <CounterButtonsElement Model="Model"/>
+      <CounterButtonsElement Model="Model" RefreshHolder="refreshToken"/>
 @*      @foreach (var counterAction in Model.CounterAction)
       {
         <button class="btn btn-outline-light align-middle" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
@@ -32,9 +31,11 @@
     [Parameter]
     public Counter Model { get; set; }
 
+    private RefreshToken refreshToken = new RefreshToken();
+
     protected override async Task OnInitializedAsync()
-	{
-        refreshService.Add(this.GetType(), StateHasChanged);
+    {
+        refreshToken.Add(StateHasChanged);
 	}
 
     private void ActCount(Guid actId)
