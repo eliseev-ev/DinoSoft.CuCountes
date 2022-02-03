@@ -31,6 +31,10 @@
         public int SortOrder { get; set; }
         public string Name { get; set; }
         public int Value { get; set; }
+        
+        /// <summary> Имя иконки. </summary>
+        public string IconName { get; set; }
+
         public DateTime? LastUpdated { get; set; }
         public List<CounterAction> CounterActions { get; set; }
     }

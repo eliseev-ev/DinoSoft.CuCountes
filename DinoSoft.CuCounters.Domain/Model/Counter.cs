@@ -30,6 +30,12 @@ namespace DinoSoft.CuCounters.Domain.Model
             set => counter.Name = value;
         }
 
+        public string IconName
+        {
+            get => counter.IconName;
+            set => counter.IconName = value;
+        }
+
         public int Value
         {
             get => counter.Value;

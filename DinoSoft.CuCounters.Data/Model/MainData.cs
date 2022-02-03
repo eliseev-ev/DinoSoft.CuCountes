@@ -14,28 +14,31 @@
                 Name = $"Карма",
                 Value = 1,
                 Id = Guid.NewGuid(),
-                SortOrder = 0
+                SortOrder = 0,
+                IconName = "bi-diamond"
             },
             new Counter()
             {
                 Name = $"Сила",
-                Value = 1,
+                Value = 1000,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
             },
             new Counter()
             {
                 Name = $"Здоровье",
-                Value = 1,
+                Value = 10000,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-heart-pulse-fill"
             },
             new Counter()
             {
                 Name = $"Харизма",
-                Value = 1,
+                Value = 100000,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-gift"
             },
             new Counter()
             {
@@ -43,6 +46,7 @@
                 Value = 1,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-cpu"
             },
             new Counter()
             {

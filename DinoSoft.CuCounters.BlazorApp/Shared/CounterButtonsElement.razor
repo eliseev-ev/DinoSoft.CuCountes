@@ -13,11 +13,11 @@
 	public Counter Model { get; set; }
 
 	[Parameter]
-	public RefreshToken refreshToken { get; set; }
+	public RefreshToken RefreshToken { get; set; }
 
 	private void ActCount(Guid actId)
 	{
 		Model.Act(actId);
-		refreshToken.Refresh();
+		RefreshToken.Refresh();
 	}
 }

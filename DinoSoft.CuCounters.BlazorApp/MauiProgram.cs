@@ -23,7 +23,6 @@ namespace DinoSoft.CuCounters.BlazorApp
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddSingleton<MainDataManager>();
             builder.Services.AddSingleton<DataService>();
-            builder.Services.AddSingleton<IRefreshService, RefreshService>();
 
             return builder.Build();
         }
