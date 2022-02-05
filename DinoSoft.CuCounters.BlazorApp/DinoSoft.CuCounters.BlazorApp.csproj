@@ -1737,6 +1737,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\DinoSoft.CuCounters.Common\DinoSoft.CuCounters.Common.csproj" />
 	  <ProjectReference Include="..\DinoSoft.CuCounters.Data\DinoSoft.CuCounters.Data.csproj" />
 	  <ProjectReference Include="..\DinoSoft.CuCounters.Domain\DinoSoft.CuCounters.Domain.csproj" />
 	</ItemGroup>

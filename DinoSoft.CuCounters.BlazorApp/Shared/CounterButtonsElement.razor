@@ -1,10 +1,17 @@
 ﻿@using DinoSoft.CuCounters.Domain.Model
 
 <div class="align-middle justify-content-end align-self-center">
-  @foreach (var counterAction in Model.CounterAction)
-  {
-    <button class="btn btn-outline-light align-middle" style="margin: 1px" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
-  }
+    <div>
+        @foreach (var counterAction in Model.CounterAction.Take(2))
+        {
+          var className = counterAction.ActionType == CuCounters.Data.Model.CounterActionType.Add ? "btn-success" : "btn-danger";
+          <button style="margin: 4px 1px 0 1px" class="btn @className align-middle" @onclick="(() => ActCount(counterAction.Id))">@counterAction.Title</button>
+        }
+    </div>
+    <div>
+        <button style="margin: 4px 1px 0 1px;" class="btn btn-warning"><i class="bi-gear"/></button>
+    </div>
+  
 </div>
 
 @code {

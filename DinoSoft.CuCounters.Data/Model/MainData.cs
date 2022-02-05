@@ -12,7 +12,7 @@
             new Counter()
             {
                 Name = $"Карма",
-                Value = 1,
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
                 IconName = "bi-diamond"
@@ -20,14 +20,15 @@
             new Counter()
             {
                 Name = $"Сила",
-                Value = 1000,
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-trophy"
             },
             new Counter()
             {
                 Name = $"Здоровье",
-                Value = 10000,
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
                 IconName = "bi-heart-pulse-fill"
@@ -35,39 +36,42 @@
             new Counter()
             {
                 Name = $"Харизма",
-                Value = 100000,
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
                 IconName = "bi-gift"
             },
             new Counter()
             {
-                Name = $"Ум",
-                Value = 1,
+                Name = $"Общение",
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
                 IconName = "bi-cpu"
             },
             new Counter()
             {
-                Name = $"Мозг",
-                Value = 1,
+                Name = $"Интелект",
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-cpu"
             },
             new Counter()
             {
-                Name = $"counter ",
-                Value = 1,
+                Name = $"Профессия",
+                Value = 0,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-window-dock"
             },
             new Counter()
             {
-                Name = $"counter",
+                Name = $"Бесполездно потраченное время",
                 Value = 1,
                 Id = Guid.NewGuid(),
                 SortOrder = 0,
+                IconName = "bi-wifi"
             },
             new Counter()
             {

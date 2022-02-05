@@ -20,25 +20,25 @@ namespace DinoSoft.CuCounters.Domain.Model
 
         public int SortOrder
         {
-            get => counter.SortOrder;
-            set => counter.SortOrder = value;
+            get => this.counter.SortOrder;
+            set => this.counter.SortOrder = value;
         }
 
         public string Name
         {
-            get => counter.Name;
-            set => counter.Name = value;
+            get => this.counter.Name;
+            set => this.counter.Name = value;
         }
 
         public string IconName
         {
-            get => counter.IconName;
-            set => counter.IconName = value;
+            get => this.counter.IconName;
+            set => this.counter.IconName = value;
         }
 
         public int Value
         {
-            get => counter.Value;
+            get => this.counter.Value;
         }
 
         public DateTime? LastUpdated => counter.LastUpdated;
@@ -51,14 +51,20 @@ namespace DinoSoft.CuCounters.Domain.Model
             var action = counter.CounterActions.First(x => x.Id == actionId);
             if (action.ActionType == Data.Model.CounterActionType.Add)
             {
-                this.counter.Value += action.Value;
+                AddValue(action.Value);
             }
             else
             {
-                this.counter.Value -= action.Value;
+                AddValue(-action.Value);
             }
-            counter.LastUpdated = DateTime.Now;
+            this.counter.LastUpdated = DateTime.Now;
         }
 
+        [Obsolete("Сделать приватным, дырка, для теста")]
+        public void AddValue(int value)
+        {
+            this.counter.Value += value;
+            this.counter.LastUpdated = DateTime.Now;
+        }
     }
 }

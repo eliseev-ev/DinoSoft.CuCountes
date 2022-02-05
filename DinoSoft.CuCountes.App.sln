@@ -5,11 +5,23 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DinoSoft.CuCountes.App", "DinoSoft.CuCountes.App\DinoSoft.CuCountes.App.csproj", "{FAE638FC-4FE8-40A5-9640-8320B469DF37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoSoft.CuCounters.BlazorApp", "DinoSoft.CuCounters.BlazorApp\DinoSoft.CuCounters.BlazorApp.csproj", "{48AE1DD6-FEF5-4099-86AF-37461C551132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DinoSoft.CuCounters.BlazorApp", "DinoSoft.CuCounters.BlazorApp\DinoSoft.CuCounters.BlazorApp.csproj", "{48AE1DD6-FEF5-4099-86AF-37461C551132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoSoft.CuCounters.Data", "DinoSoft.CuCounters.Data\DinoSoft.CuCounters.Data.csproj", "{D7D8697A-A1F7-49A2-B803-087EA9A91481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DinoSoft.CuCounters.Data", "DinoSoft.CuCounters.Data\DinoSoft.CuCounters.Data.csproj", "{D7D8697A-A1F7-49A2-B803-087EA9A91481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoSoft.CuCounters.Domain", "DinoSoft.CuCounters.Domain\DinoSoft.CuCounters.Domain.csproj", "{752BAE01-AD09-4F11-9D6E-270F66A91CA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DinoSoft.CuCounters.Domain", "DinoSoft.CuCounters.Domain\DinoSoft.CuCounters.Domain.csproj", "{752BAE01-AD09-4F11-9D6E-270F66A91CA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoSoft.CuCounters.Common", "DinoSoft.CuCounters.Common\DinoSoft.CuCounters.Common.csproj", "{D237D976-3BE0-4640-8373-BAF596D95CD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E71BCC08-F897-4E82-AE7B-196B7DE8E76A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoSoft.CuCounters.Common.Tests", "DinoSoft.CuCounters.Common.Tests\DinoSoft.CuCounters.Common.Tests.csproj", "{7E2970D6-593B-4BAA-B075-2EC3D307C307}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{1DDA33E5-FABB-4E3E-8E10-73C6DB39005F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		stylecop.json = stylecop.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,9 +49,20 @@ Global
 		{752BAE01-AD09-4F11-9D6E-270F66A91CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{752BAE01-AD09-4F11-9D6E-270F66A91CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{752BAE01-AD09-4F11-9D6E-270F66A91CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D237D976-3BE0-4640-8373-BAF596D95CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D237D976-3BE0-4640-8373-BAF596D95CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D237D976-3BE0-4640-8373-BAF596D95CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D237D976-3BE0-4640-8373-BAF596D95CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2970D6-593B-4BAA-B075-2EC3D307C307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2970D6-593B-4BAA-B075-2EC3D307C307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2970D6-593B-4BAA-B075-2EC3D307C307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2970D6-593B-4BAA-B075-2EC3D307C307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7E2970D6-593B-4BAA-B075-2EC3D307C307} = {E71BCC08-F897-4E82-AE7B-196B7DE8E76A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

@@ -3,6 +3,7 @@
     public enum CounterActionType
     {
         Add,
-        Sub
+        Sub,
+        //Set // обнулить - установить значение
     }
 }
