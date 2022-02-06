@@ -4,9 +4,9 @@ namespace DinoSoft.CuCounters.BlazorApp
 {
     public partial class App : Application
     {
-        private readonly MainDataManager mainDataManager;
+        private readonly DataManager mainDataManager;
 
-        public App(MainDataManager mainDataManager)
+        public App(DataManager mainDataManager)
         {
             InitializeComponent();
 

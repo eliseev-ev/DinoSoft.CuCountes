@@ -1,0 +1,27 @@
+﻿@page "/"
+@using DinoSoft.CuCounters.Data.Infrastructure
+@using DinoSoft.CuCounters.Domain.Model
+@using DinoSoft.CuCounters.Domain.Infrastructure
+@inject DataManager dataManager
+
+<LayoutView>
+<ol class="list-group d-flex justify-content-between ">
+@foreach (var counterGroup in counterGroups)
+{
+    <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
+        <CounterGroupSliderElement CounterGroup=counterGroup/>
+    </li>
+}
+</ol>
+</LayoutView>
+
+
+
+@code {
+	private IEnumerable<DinoSoft.CuCounters.Domain.Model.CounterGroup> counterGroups;
+
+	protected override async Task OnInitializedAsync()
+	{
+		counterGroups = dataManager.GetCounterGroups();;
+	}
+}

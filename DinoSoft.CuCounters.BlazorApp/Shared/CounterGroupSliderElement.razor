@@ -1,0 +1,34 @@
+﻿@using DinoSoft.CuCounters.BlazorApp.Pages
+@using DinoSoft.CuCounters.Common.Extensions
+@using DinoSoft.CuCounters.Domain.Model
+@inject NavigationManager NavigationManager
+
+<div class="container list-group-item text-white main-bg shadow" @onclick="NavigateToCounterComponent">
+    <div class="row justify-content-between" style="height:65px">
+        <div class="col-2 justify-content-start text-left">
+            <i style="font-size: 45px; color: cornflowerblue" class="@CounterGroup.IconName"/>
+        </div>
+        <div class="col-auto text-left">
+             <h6>@CounterGroup.Name</h6>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public DinoSoft.CuCounters.Domain.Model.CounterGroup CounterGroup { get; set; }
+
+
+    private RefreshToken refreshToken = new RefreshToken();
+
+    protected override async Task OnInitializedAsync()
+    {
+        refreshToken.Add(StateHasChanged);
+    }
+
+    private void NavigateToCounterComponent()
+    {
+        NavigationManager.NavigateTo($"counter-group/{CounterGroup.Id}");
+    }
+}
