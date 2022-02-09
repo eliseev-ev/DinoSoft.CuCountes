@@ -1,4 +1,5 @@
 ﻿@using DinoSoft.CuCounters.Domain.Model
+@inject NavigationManager NavigationManager
 
 <div class="align-middle justify-content-end align-self-center">
     <div>
@@ -9,7 +10,7 @@
         }
     </div>
     <div>
-        <button style="margin: 4px 1px 0 1px;" class="btn btn-warning"><i class="bi-gear"/></button>
+        <button style="margin: 4px 1px 0 1px;" class="btn btn-warning" @onclick="NavigateToCounterComponent"><i class="bi-gear"/></button>
     </div>
 </div>
 
@@ -26,4 +27,9 @@
 		Model.Act(actId);
 		RefreshToken.Refresh();
 	}
+
+    private void NavigateToCounterComponent()
+    {
+        NavigationManager.NavigateTo($"counter-groups/{Model.CounterGroupId}/counters/{Model.Id}");
+    }
 }

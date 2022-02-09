@@ -15,8 +15,11 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
 
         public IEnumerable<CounterGroup> GetCounterGroups()
         {
-            //dataContext = GenerateTestDataContext();
+            // todo: DataContext init
+            //dataContext = InitAndSaveTestDataContext();
+
             dataContext = dataContextRepository.DataContext;
+
             return dataContext.CounterGroups.Select(x => new CounterGroup(x));
         }
 
@@ -28,44 +31,46 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
             }
         }
 
-        private Data.Model.DataContext GenerateTestDataContext()
+        private Data.Model.DataContext InitAndSaveTestDataContext()
         {
-            var dataContext = new Data.Model.DataContext()
+            dataContext = new Data.Model.DataContext()
             {
                 CounterGroups = new List<Data.Model.CounterGroup>()
             };
 
             for (int i = 0; i < 10; i++)
             {
+                var counterGroupId = Guid.NewGuid();
                 dataContext.CounterGroups.Add(
                     new Data.Model.CounterGroup
                     {
                         Name = $"Карма",
-                        Id = Guid.NewGuid(),
+                        Id = counterGroupId,
                         IconName = "bi-diamond",
                         Counters = new List<Data.Model.Counter>()
                         {
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
-                            GenCounter(),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId),
                         }
                     });
             }
 
-            Data.Model.Counter GenCounter() => new Data.Model.Counter()
+            Data.Model.Counter GenCounter(Guid counterGroupId) => new Data.Model.Counter()
             {
                 Id = Guid.NewGuid(),
+                CounterGroupId = counterGroupId,
                 Value = 1,
                 Name = $"Карма",
                 IconName = "bi-diamond",
@@ -92,7 +97,7 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
                     }
                 }
             };
-
+            SaveCurrent();
             return dataContext;
         }
     }

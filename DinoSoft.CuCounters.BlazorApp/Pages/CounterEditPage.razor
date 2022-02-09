@@ -1,0 +1,35 @@
+﻿@page "/counter-groups/{CounterGroupId:guid}/counters/{Id:guid}/edit"
+@using DinoSoft.CuCounters.Domain.Model
+@using DinoSoft.CuCounters.Domain.Infrastructure
+@inject DataManager dataManager
+@inject NavigationManager NavigationManager
+
+<LayoutView>
+asd
+    <div class="sidebar justify-content-start text-left">
+        <button class="btn btn-primary" @onclick="NavigateToCounterComponent"> return; </button>
+    </div>
+</LayoutView>
+
+
+@code {
+
+    [Parameter]
+    public  Guid CounterGroupId { get; set; }
+
+    [Parameter]
+    public  Guid id { get; set; }
+
+    public Counter counter { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        counter = dataManager.GetCounterGroups().First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == id);
+    }
+
+    private void NavigateToCounterComponent()
+    {
+        dataManager.SaveCurrent();
+        NavigationManager.NavigateTo($"counter-group/{counter.CounterGroupId}");
+    }
+}

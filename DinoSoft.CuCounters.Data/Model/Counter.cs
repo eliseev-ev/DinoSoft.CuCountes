@@ -39,5 +39,7 @@ namespace DinoSoft.CuCounters.Data.Model
         public DateTime? LastUpdated { get; set; }
 
         public List<CounterAction> CounterActions { get; set; }
+        
+        public Guid CounterGroupId { get; set; }
     }
 }
