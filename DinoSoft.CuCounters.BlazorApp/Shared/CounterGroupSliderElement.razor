@@ -3,13 +3,14 @@
 @using DinoSoft.CuCounters.Domain.Model
 @inject NavigationManager NavigationManager
 
-<div class="container list-group-item text-white main-bg shadow" @onclick="NavigateToCounterComponent">
-    <div class="row justify-content-between" style="height:65px">
+<div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToCounterComponent">
+    <div class="row justify-content-between" style="height:75px">
         <div class="col-2 justify-content-start text-left">
-            <i style="font-size: 45px; color: cornflowerblue" class="@CounterGroup.IconName"/>
+            <i style="font-size: 45px;" class="@CounterGroup.IconName cuc-style-2"/>
         </div>
-        <div class="col-auto text-left">
-             <h6>@CounterGroup.Name</h6>
+        <div class="col-auto text-left cuc-text">
+             <h3>@CounterGroup.Name</h3>
+             <h5>3</h5>
         </div>
     </div>
 
@@ -29,6 +30,6 @@
 
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo($"counter-groups/{CounterGroup.Id}");
+        NavigationManager.NavigateTo(Links.CounterGroupPage(CounterGroup.Id)); 
     }
 }

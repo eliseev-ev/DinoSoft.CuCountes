@@ -1747,6 +1747,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Infrastructure\Pages\" />
 	  <Folder Include="Pages\Model\" />
 	</ItemGroup>
 

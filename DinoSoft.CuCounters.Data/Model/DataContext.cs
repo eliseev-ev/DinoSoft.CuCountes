@@ -4,7 +4,7 @@ using DinoSoft.CuCounters.Data.Infrastructure.Model;
 
 namespace DinoSoft.CuCounters.Data.Model
 {
-    public class DataContext : IdNameModel
+    public class DataContext
     {
         public List<CounterGroup> CounterGroups { get; set; }
     }

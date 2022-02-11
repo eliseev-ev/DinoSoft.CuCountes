@@ -40,6 +40,7 @@ namespace DinoSoft.CuCounters.Domain.Model
         public int Value
         {
             get => this.counter.Value;
+            set => this.counter.Value = value;
         }
 
         public DateTime? LastUpdated => counter.LastUpdated;

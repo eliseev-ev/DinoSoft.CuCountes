@@ -63,6 +63,34 @@ a, .btn-link {
 		content: "An error has occurred."
 	}
 
-.main-bg {
-	background: #122322
+.header-bg {
+	background: #2a2a2a;
+}
+
+
+
+/*Colors*/
+
+.cuc-bg {
+	background: #1d1d1d;
+}
+
+.cuc-bg-sub {
+	background: #D7DEDB;
+}
+
+.cuc-style {
+	color: #4A4A4A;
+}
+
+.cuc-style-2 {
+	color: #0155FF;
+}
+
+.cuc-text {
+	color: #ffffff;
+}
+
+.cuc-text-sub {
+	color: #5C5E5E;
 }

@@ -5,19 +5,18 @@
 @inject NavigationManager NavigationManager
 
 <LayoutView>
-
-    <div class="sidebar justify-content-start text-left">
-        <button class="btn btn-primary" @onclick="NavigateToCounterComponent"> Open </button>
-    </div>
+     <div class="justify-content-between text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
+            <h6 class="col-auto"  @onclick="NavigateBack">Назад</h6>
+     </div>
 
     <ol class="list-group d-flex justify-content-between ">
-    @foreach (var counter in CounterGroup.Counters)
-    {
-        <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
-          <CounterSliderElement Model=counter/>
-        </li>
-    }
-</ol>
+        @foreach (var counter in CounterGroup.Counters)
+        {
+            <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
+              <CounterSliderElement Model=counter/>
+            </li>
+        }
+    </ol>
 </LayoutView>
 
 
@@ -33,7 +32,7 @@
         CounterGroup = dataManager.GetCounterGroups().First(x => x.Id == id);
     }
 
-    private void NavigateToCounterComponent()
+    private void NavigateBack()
     {
         dataManager.SaveCurrent();
         NavigationManager.NavigateTo("");

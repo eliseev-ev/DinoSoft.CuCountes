@@ -5,10 +5,10 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
     public class DataManager
     {
-        private readonly DataContextRepository dataContextRepository;
+        private readonly DataContextProvider dataContextRepository;
         private Data.Model.DataContext dataContext;
 
-        public DataManager(DataContextRepository dataContextRepository)
+        public DataManager(DataContextProvider dataContextRepository)
         {
             this.dataContextRepository = dataContextRepository;
         }

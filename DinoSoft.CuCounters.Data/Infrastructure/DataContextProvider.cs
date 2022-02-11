@@ -3,10 +3,10 @@ using DinoSoft.CuCounters.Data.Model;
 
 namespace DinoSoft.CuCounters.Data.Infrastructure
 {
-    public class DataContextRepository
+    public class DataContextProvider
     {
         private readonly string fileName;
-        public DataContextRepository()
+        public DataContextProvider()
         {
             fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "db");
         }

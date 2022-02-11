@@ -5,11 +5,37 @@
 @inject NavigationManager NavigationManager
 
 <LayoutView>
-asd
-    <div class="sidebar justify-content-start text-left">
-        <button class="btn btn-primary" @onclick="NavigateToCounterComponent"> return; </button>
+     <div class="d-flex text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
+         <div class="row justify-content-between">
+            <h6 class="col col-auto text-left" @onclick="NavigateBack">Отмена</h6>
+            <h6 class="col col-auto text-right" @onclick="HandleValidSubmit">Сохранить</h6>
+         </div>
+     </div>
+
+    <div class="content text-white">
+        <h3>Редактировать</h3>
+
+        <EditForm Model="@counter" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Имя</label>
+                <InputText id="name" class="form-control" @bind-Value="counter.Name" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Значение</label>
+                <InputNumber id="name" class="form-control" @bind-Value="counter.Value" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Иконка</label>
+                <InputText id="name" class="form-control" @bind-Value="counter.IconName" />
+            </div>
+           @* <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>*@
+        </EditForm>
     </div>
 </LayoutView>
+
 
 
 @code {
@@ -27,9 +53,16 @@ asd
         counter = dataManager.GetCounterGroups().First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == id);
     }
 
-    private void NavigateToCounterComponent()
+    private void NavigateBack()
     {
+        NavigationManager.NavigateTo(Links.CounterGroupPage(counter.CounterGroupId));
+    }
+
+    private void HandleValidSubmit()
+    {
+        //Logger.LogInformation("HandleValidSubmit called");
         dataManager.SaveCurrent();
-        NavigationManager.NavigateTo($"counter-group/{counter.CounterGroupId}");
+        NavigateBack();
+        // Process the valid form
     }
 }
