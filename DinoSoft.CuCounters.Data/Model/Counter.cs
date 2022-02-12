@@ -1,4 +1,5 @@
-﻿using DinoSoft.CuCounters.Data.Infrastructure.Model;
+﻿
+using DinoSoft.CuCounters.Data.Common.Model;
 
 namespace DinoSoft.CuCounters.Data.Model
 {
@@ -12,25 +13,25 @@ namespace DinoSoft.CuCounters.Data.Model
                 {
                     Id = Guid.NewGuid(),
                     Value = 1,
-                    ActionType = CounterActionType.Add
+                    ActionType = CounterActionType.Add,
                 },
                 new CounterAction()
                 {
                     Id = Guid.NewGuid(),
                     Value = 1,
-                    ActionType = CounterActionType.Sub
+                    ActionType = CounterActionType.Sub,
                 },
                 new CounterAction()
                 {
                     Id = Guid.NewGuid(),
                     Value = 10,
-                    ActionType = CounterActionType.Add
+                    ActionType = CounterActionType.Add,
                 },
                 new CounterAction()
                 {
                     Id = Guid.NewGuid(),
                     Value = 10,
-                    ActionType = CounterActionType.Sub
+                    ActionType = CounterActionType.Sub,
                 }
             };
         }

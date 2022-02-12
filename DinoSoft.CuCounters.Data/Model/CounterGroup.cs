@@ -1,4 +1,4 @@
-﻿using DinoSoft.CuCounters.Data.Infrastructure.Model;
+﻿using DinoSoft.CuCounters.Data.Common.Model;
 
 namespace DinoSoft.CuCounters.Data.Model
 {

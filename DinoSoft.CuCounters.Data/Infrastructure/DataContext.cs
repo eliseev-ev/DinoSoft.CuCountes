@@ -1,47 +1,46 @@
-﻿using DinoSoft.CuCounters.Data.Infrastructure;
-using DinoSoft.CuCounters.Domain.Model;
+﻿using System.Text.Json;
+using DinoSoft.CuCounters.Data.Model;
+using Microsoft.EntityFrameworkCore;
 
-namespace DinoSoft.CuCounters.Domain.Infrastructure
+namespace DinoSoft.CuCounters.Data.Infrastructure
 {
-    public class DataManager
+    public class DataContext : DbContext
     {
-        private readonly DataContextProvider dataContextRepository;
-        private Data.Model.DataContext dataContext;
-
-        public DataManager(DataContextProvider dataContextRepository)
+        public DataContext()
         {
-            this.dataContextRepository = dataContextRepository;
-        }
+            //SQLitePCL.Batteries_V2.Init();
+            //this.Database.EnsureCreated();
 
-        public IEnumerable<CounterGroup> GetCounterGroups()
-        {
-            // todo: DataContext init
-            //dataContext = InitAndSaveTestDataContext();
-
-            dataContext = dataContextRepository.DataContext;
-
-            return dataContext.CounterGroups.Select(x => new CounterGroup(x));
-        }
-
-        public void SaveCurrent()
-        {
-            if (dataContext != null)
+            if (this.Database.EnsureCreated())
             {
-                dataContextRepository.Save(dataContext);
+                Populate();
             }
         }
 
-        private Data.Model.DataContext InitAndSaveTestDataContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            dataContext = new Data.Model.DataContext()
-            {
-                CounterGroups = new List<Data.Model.CounterGroup>()
-            };
+            //string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "entities.db3");
+            //optionsBuilder
+            //    .UseSqlite($"Filename={dbPath}");
+            optionsBuilder.UseInMemoryDatabase("db");
+        }
+
+        public DbSet<CounterGroup> CounterGroups { get; set; }
+
+        public DbSet<Counter> Counters { get; set; }
+
+        public DbSet<CounterAction> CounterActions { get; set; }
+
+
+
+        private void Populate()
+        {
+            var counterGroups = new List<Data.Model.CounterGroup>();
 
             for (int i = 0; i < 10; i++)
             {
                 var counterGroupId = Guid.NewGuid();
-                dataContext.CounterGroups.Add(
+                counterGroups.Add(
                     new Data.Model.CounterGroup
                     {
                         Name = $"Карма",
@@ -67,6 +66,9 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
                         }
                     });
             }
+
+            this.CounterGroups.AddRange(counterGroups);
+            this.SaveChanges();
 
             Data.Model.Counter GenCounter(Guid counterGroupId, string color) => new Data.Model.Counter()
             {
@@ -99,8 +101,6 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
                     }
                 }
             };
-            SaveCurrent();
-            return dataContext;
         }
     }
 }

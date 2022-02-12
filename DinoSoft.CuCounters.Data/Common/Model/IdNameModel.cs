@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DinoSoft.CuCounters.Data.Infrastructure.Model
+namespace DinoSoft.CuCounters.Data.Common.Model
 {
-    public abstract class IdNameModel
+    public abstract class IdNameModel : IIdentityModel<Guid>
     {
         public Guid Id { get; set; }
 

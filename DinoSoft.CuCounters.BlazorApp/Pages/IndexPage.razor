@@ -2,7 +2,7 @@
 @using DinoSoft.CuCounters.Data.Infrastructure
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
-@inject DataManager dataManager
+@inject CounterGroupManager counterGroupManager
 
 <LayoutView>
 <ol class="list-group d-flex justify-content-between ">
@@ -22,6 +22,6 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		counterGroups = dataManager.GetCounterGroups();;
+		counterGroups = await counterGroupManager.GetCounterGroups();
 	}
 }

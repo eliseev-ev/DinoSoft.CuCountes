@@ -1,6 +1,7 @@
 ﻿using DinoSoft.CuCounters.BlazorApp.Data;
 using DinoSoft.CuCounters.BlazorApp.Infrastructure;
 using DinoSoft.CuCounters.Data.Infrastructure;
+using DinoSoft.CuCounters.Data.Repository;
 using DinoSoft.CuCounters.Domain.Infrastructure;
 using Microsoft.AspNetCore.Components.WebView.Maui;
 
@@ -21,8 +22,12 @@ namespace DinoSoft.CuCounters.BlazorApp
 
             builder.Services.AddBlazorWebView();
             builder.Services.AddSingleton<WeatherForecastService>();
-            builder.Services.AddSingleton<DataManager>();
-            builder.Services.AddSingleton<DataContextProvider>();
+
+            builder.Services.AddScoped<CounterGroupRepository>();
+            builder.Services.AddScoped<CounterRepository>();
+            builder.Services.AddScoped<CounterActionRepository>();
+            builder.Services.AddScoped<CounterGroupManager>();
+            builder.Services.AddDbContext<DataContext>();
 
             return builder.Build();
         }

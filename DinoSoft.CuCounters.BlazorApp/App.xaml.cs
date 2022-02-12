@@ -4,14 +4,12 @@ namespace DinoSoft.CuCounters.BlazorApp
 {
     public partial class App : Application
     {
-        private readonly DataManager mainDataManager;
 
-        public App(DataManager mainDataManager)
+        public App()
         {
             InitializeComponent();
 
             this.MainPage = new MainPage();
-            this.mainDataManager = mainDataManager;
         }
 
         protected override Window CreateWindow(IActivationState activationState)
@@ -20,17 +18,17 @@ namespace DinoSoft.CuCounters.BlazorApp
 
             window.Deactivated += (s, e) =>
             {
-                mainDataManager.SaveCurrent();
+                //mainDataManager.SaveCurrent();
             };
 
             window.Destroying += (s, e) =>
             {
-                mainDataManager.SaveCurrent();
+                //mainDataManager.SaveCurrent();
             };
 
             window.Stopped += (s, e) =>
             {
-                mainDataManager.SaveCurrent();
+                //mainDataManager.SaveCurrent();
             };
 
             return window;
