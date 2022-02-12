@@ -1,39 +1,55 @@
-﻿@using DinoSoft.CuCounters.BlazorApp.Pages
+﻿@using DinoSoft.CuCounters.BlazorApp.Infrastructure.Constants
+@using DinoSoft.CuCounters.BlazorApp.Infrastructure.Helpers
+@using DinoSoft.CuCounters.BlazorApp.Pages
 @using DinoSoft.CuCounters.Common.Extensions
 @using DinoSoft.CuCounters.Domain.Model
+@inject NavigationManager NavigationManager
 
-<div class="container list-group-item cuc-bg cuc-text shadow">
-    <div class="row justify-content-between" style="height:80px" >
-        <div class="col-2 justify-content-start text-left">
-            <i style="font-size: 50px; color: @Model.IconColor" class="@Model.IconName"/>
-        </div>
-        <div class="col-auto text-right align-middle">
-            <div>
-                @for (var i = values.Length; i < 6; i++)
-                {
-                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">0</div>
-                }
+<div class="container list-group-item cuc-bg cuc-text shadow" style="padding-top:0px; padding-bottom:0px;">
+    <div class="row justify-content-between" style="height:90px; padding-right:10px;" >
+        <div class="col-auto" style="padding-top:3px; padding-bottom:3px;" @onclick="NavigateToCounterComponent">
+            <div class="row justify-content-between" >
+               <div class="col-2 justify-content-start text-left">
+                   <i style="font-size: 40px; color: @Model.IconColor" class="@Model.IconName"/>
+               </div>
+               <div class="col-auto text-right align-middle">
+                   <div>
+                       @for (var i = values.Length; i < 6; i++)
+                       {
+                           <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">0</div>
+                       }
 
-                @foreach (var value in values)
-                {
-                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">@value</div>
-                }
+                       @foreach (var value in values)
+                       {
+                           <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">@value</div>
+                       }
+                   </div>
+                   <span class="badge bg-success ">+1</span>
+               </div>
             </div>
-            <span class="badge bg-success ">+1</span>
+            <div class="row justify-content-between" style="height:10px">
+                <div class="col-auto text-left">
+                    <h6>@Model.Name</h6>
+                </div>
+                <div class="col-auto justify-content-end text-right cuc-text-sub">
+                    <h6>@updatedDate</h6>
+                </div>
+            </div>
         </div>
-        <div class="col-auto  align-middle justify-content-end">
-            <CounterButtonsElement Model="Model" RefreshToken="refreshToken"/>
+
+         <div class="col-auto d-flex align-self-stretch justify-content-between">
+            <div class="row d-flex align-self-stretch justify-content-between">
+                <div class="col-auto text-center align-middle cuc-button-add text-success border-end" @onclick="@(e => Model.AddValue(1))">
+                    <i style="color: darkgray; font-size: 30px;" class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.PlusSquareFill)"/>
+                </div>
+                <div class="col-auto text-center align-middle cuc-button-sub text-danger" @onclick="@(e => Model.AddValue(-1))">
+                     <i style="color: darkgray; font-size: 30px; " class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.DashSquareFill)"/>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row justify-content-between" style="height:15px">
-        <div class="col-auto text-left">
-            <h6>@Model.Name</h6>
-        </div>
-        <div class="col-auto justify-content-end text-right cuc-text-sub">
-            <h6>@updatedDate</h6>
-        </div>
-    </div>
+
 </div>
 
 @code {
@@ -53,5 +69,10 @@
     protected override async Task OnInitializedAsync()
     {
         refreshToken.Add(StateHasChanged);
+    }
+
+    private void NavigateToCounterComponent()
+    {
+        NavigationManager.NavigateTo($"counter-groups/{Model.CounterGroupId}/counters/{Model.Id}");
     }
 }
