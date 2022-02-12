@@ -37,6 +37,12 @@ namespace DinoSoft.CuCounters.Domain.Model
             set => this.counter.IconName = value;
         }
 
+        public string IconColor
+        {
+            get => this.counter.IconColor;
+            set => this.counter.IconColor = value;
+        }
+
         public int Value
         {
             get => this.counter.Value;

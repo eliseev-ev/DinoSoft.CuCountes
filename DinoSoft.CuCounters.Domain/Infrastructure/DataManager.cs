@@ -47,33 +47,35 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
                         Name = $"Карма",
                         Id = counterGroupId,
                         IconName = "bi-diamond",
+                        IconColor = "#0000FF",
                         Counters = new List<Data.Model.Counter>()
                         {
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
-                            GenCounter(counterGroupId),
+                            GenCounter(counterGroupId, "#00FF00"),
+                            GenCounter(counterGroupId, "#0000FF"),
+                            GenCounter(counterGroupId, "#00FFFF"),
+                            GenCounter(counterGroupId, "#FFFF00"),
+                            GenCounter(counterGroupId, "#FFF000"),
+                            GenCounter(counterGroupId, "#F00F00"),
+                            GenCounter(counterGroupId, "#12F300"),
+                            GenCounter(counterGroupId, "#1200FF"),
+                            GenCounter(counterGroupId, "#00FFFF"),
+                            GenCounter(counterGroupId, "#F0F0F0"),
+                            GenCounter(counterGroupId, "#0FFF00"),
+                            GenCounter(counterGroupId, "#0000FF"),
+                            GenCounter(counterGroupId, "#00FF00"),
+                            GenCounter(counterGroupId, "#00FF00"),
                         }
                     });
             }
 
-            Data.Model.Counter GenCounter(Guid counterGroupId) => new Data.Model.Counter()
+            Data.Model.Counter GenCounter(Guid counterGroupId, string color) => new Data.Model.Counter()
             {
                 Id = Guid.NewGuid(),
                 CounterGroupId = counterGroupId,
                 Value = 1,
                 Name = $"Карма",
                 IconName = "bi-diamond",
+                IconColor = color,
                 SortOrder = 0,
                 CounterActions = new List<Data.Model.CounterAction>
                 {

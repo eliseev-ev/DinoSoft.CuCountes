@@ -2,22 +2,21 @@
 @using DinoSoft.CuCounters.Common.Extensions
 @using DinoSoft.CuCounters.Domain.Model
 
-
 <div class="container list-group-item cuc-bg cuc-text shadow">
-    <div class="row justify-content-between" style="height:75px">
+    <div class="row justify-content-between" style="height:80px" >
         <div class="col-2 justify-content-start text-left">
-            <i style="font-size: 55px; color: cornflowerblue" class="@Model.IconName"/>
+            <i style="font-size: 50px; color: @Model.IconColor" class="@Model.IconName"/>
         </div>
         <div class="col-auto text-right align-middle">
             <div>
                 @for (var i = values.Length; i < 6; i++)
                 {
-                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 1px">0</div>
+                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">0</div>
                 }
 
                 @foreach (var value in values)
                 {
-                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 1px">@value</div>
+                    <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">@value</div>
                 }
             </div>
             <span class="badge bg-success ">+1</span>
@@ -29,10 +28,10 @@
 
     <div class="row justify-content-between" style="height:15px">
         <div class="col-auto text-left">
-             <h6>@Model.Name</h6>
+            <h6>@Model.Name</h6>
         </div>
         <div class="col-auto justify-content-end text-right cuc-text-sub">
-            <h6>@Model.LastUpdated?.ToString("hh:mm")</h6>
+            <h6>@updatedDate</h6>
         </div>
     </div>
 </div>
@@ -43,6 +42,11 @@
     public Counter Model { get; set; }
 
     private int[] values => Model.Value.ToArray();
+
+    private string updatedDate => 
+        Model.LastUpdated.HasValue ? 
+        (Model.LastUpdated.Value.Date == DateTime.Now.Date ? Model.LastUpdated.Value.ToString("hh:mm") : Model.LastUpdated.Value.ToString("g"))
+        : string.Empty;
 
     private RefreshToken refreshToken = new RefreshToken();
 

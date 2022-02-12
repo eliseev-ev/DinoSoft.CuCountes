@@ -44,18 +44,18 @@
     public  Guid CounterGroupId { get; set; }
 
     [Parameter]
-    public  Guid id { get; set; }
+    public  Guid Id { get; set; }
 
     public Counter counter { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        counter = dataManager.GetCounterGroups().First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == id);
+        counter = dataManager.GetCounterGroups().First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo(Links.CounterGroupPage(counter.CounterGroupId));
+        NavigationManager.NavigateTo(Links.CounterPage(CounterGroupId, Id));
     }
 
     private void HandleValidSubmit()

@@ -17,13 +17,19 @@ namespace DinoSoft.CuCounters.Data.Model
                 new CounterAction()
                 {
                     Id = Guid.NewGuid(),
-                    Value = 5,
+                    Value = 1,
+                    ActionType = CounterActionType.Sub
+                },
+                new CounterAction()
+                {
+                    Id = Guid.NewGuid(),
+                    Value = 10,
                     ActionType = CounterActionType.Add
                 },
                 new CounterAction()
                 {
                     Id = Guid.NewGuid(),
-                    Value = 1,
+                    Value = 10,
                     ActionType = CounterActionType.Sub
                 }
             };
@@ -35,6 +41,9 @@ namespace DinoSoft.CuCounters.Data.Model
         
         /// <summary> Имя иконки. </summary>
         public string IconName { get; set; }
+
+        /// <summary> Имя Цвет. </summary>
+        public string IconColor { get; set; } = "#112233";
 
         public DateTime? LastUpdated { get; set; }
 
