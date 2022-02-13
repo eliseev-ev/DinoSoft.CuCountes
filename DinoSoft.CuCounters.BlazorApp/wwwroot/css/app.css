@@ -102,3 +102,67 @@ a, .btn-link {
 .cuc-button-sub {
 	background: #ffffff14;
 }
+
+
+
+
+.button-up {
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+	background-color: #16a085;
+	color: #fff;
+	text-align: center;
+	overflow: hidden;
+}
+
+.button-up:after {
+	content: "";
+	background: green;
+	display: block;
+	position: absolute;
+	padding-top: 400%;
+	padding-left: 10000%;
+	margin-left: -20px !important;
+	margin-top: -100%;
+	opacity: 0;
+	transition: all 1s
+}
+
+.button-up:active:after {
+	padding: 0;
+	margin: 170%;
+	opacity: 1;
+	transition: 0s
+}
+
+
+.button-down {
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+	background-color: #16a085;
+	color: #fff;
+	text-align: center;
+	overflow: hidden;
+}
+
+.button-down:after {
+	content: "";
+	background: red;
+	display: block;
+	position: absolute;
+	padding-top: 400%;
+	padding-left: 10000%;
+	margin-left: -20px !important;
+	margin-top: -100%;
+	opacity: 0;
+	transition: all 1s
+}
+
+.button-down:active:after {
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 0s
+}

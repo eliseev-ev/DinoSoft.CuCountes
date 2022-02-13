@@ -37,13 +37,13 @@
             </div>
         </div>
 
-         <div class="col-auto d-flex align-self-stretch justify-content-between">
-            <div class="row d-flex align-self-stretch justify-content-between">
-                <div class="col-auto text-center align-middle cuc-button-add text-success border-end" @onclick="@(e => Counter.AddValue(1))">
-                    <i style="color: darkgray; font-size: 30px;" class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.PlusSquareFill)"/>
+         <div class="col-auto d-flex justify-content-between">
+            <div class="row d-flex justify-content-between">
+                <div class="button-up d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #145c00a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(1))">
+                    <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowUp) align-self-center" style="color: darkgray; font-size: 30px;"/>
                 </div>
-                <div class="col-auto text-center align-middle cuc-button-sub text-danger" @onclick="@(e => Counter.AddValue(-1))">
-                     <i style="color: darkgray; font-size: 30px; " class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.DashSquareFill)"/>
+                <div class="button-down d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #5c0000a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(-1))">
+                     <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowDown) align-self-center" style="color: darkgray; font-size: 30px;"/>
                 </div>
             </div>
         </div>
