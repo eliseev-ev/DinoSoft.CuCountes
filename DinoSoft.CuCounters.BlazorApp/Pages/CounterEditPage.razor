@@ -1,38 +1,47 @@
 ﻿@page "/counter-groups/{CounterGroupId:guid}/counters/{Id:guid}/edit"
+@using DinoSoft.CuCounters.BlazorApp.Infrastructure.Constants
+@using DinoSoft.CuCounters.BlazorApp.Infrastructure.Helpers
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
 @inject CounterGroupManager counterGroupManager
 @inject NavigationManager NavigationManager
 
 <LayoutView>
-     <div class="d-flex text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
-         <div class="row justify-content-between">
-            <h6 class="col col-auto text-left" @onclick="NavigateBack">Отмена</h6>
-            <h6 class="col col-auto text-right" @onclick="HandleValidSubmit">Сохранить</h6>
-         </div>
-     </div>
-
-    <div class="content text-white">
-        <h3>Редактировать</h3>
-
-        <EditForm Model="@counter" OnValidSubmit="@HandleValidSubmit">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Имя</label>
-                <InputText id="name" class="form-control" @bind-Value="counter.Name" />
+    <div class="container">
+        <div class="row justify-content-between text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
+            <div class="col-auto text-left">
+               <h6 @onclick="NavigateBack">Назад</h6>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Значение</label>
-                <InputNumber id="name" class="form-control" @bind-Value="counter.Value" />
+            <div class="col-auto text-right">
+               <h6 class="@canSaveClass" @onclick="Save">Сохранить</h6>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Иконка</label>
-                <InputText id="name" class="form-control" @bind-Value="counter.IconName" />
-            </div>
-           @* <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>*@
-        </EditForm>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content text-white">
+            @*https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-5.0*@
+            <EditForm EditContext="@editContext">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                 <div class="col-auto text-center align-middle cuc-button-sub text-danger">
+                      <i style="color: darkgray; font-size: 60px;" class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.DashSquareFill)"/>
+                 </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Имя</label>
+                    <InputText id="name" class="form-control" @bind-Value="counter.Name" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Значение</label>
+                    <InputNumber id="value" class="form-control" @bind-Value="counter.Value" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" style="margin:10px;" class="form-label">Иконка</label>
+                    <InputText id="iconName" class="form-control" @bind-Value="counter.IconName" />
+                </div>
+               @* <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>*@
+            </EditForm>
+        </div>
     </div>
 </LayoutView>
 
@@ -46,11 +55,23 @@
     [Parameter]
     public  Guid Id { get; set; }
 
-    public Counter counter { get; set; }
+    /// <summary> Счетчик. </summary>
+    private Counter counter { get; set; }
+
+    /// <summary> Контекст редактирования. /// </summary>
+    private EditContext editContext;
+
+    private bool canSave { get; set; } = false;
+    private string canSaveClass => canSave ? string.Empty : "cuc-text-sub";
 
     protected override async Task OnInitializedAsync()
     {
         counter = (await counterGroupManager.GetCounterGroups()).First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
+        editContext = new EditContext(counter);
+        editContext.OnFieldChanged += (_,__) => 
+        { 
+            canSave = editContext.Validate(); 
+        };
     }
 
     private void NavigateBack()
@@ -58,8 +79,12 @@
         NavigationManager.NavigateTo(Links.CounterPage(CounterGroupId, Id));
     }
 
-    private void HandleValidSubmit()
+    private void Save()
     {
+        if (!editContext.Validate())
+        {
+            return;
+        }
         //Logger.LogInformation("HandleValidSubmit called");
         //save?
         NavigateBack();

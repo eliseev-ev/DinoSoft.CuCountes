@@ -5,15 +5,22 @@
 @inject NavigationManager NavigationManager
 
 <LayoutView>
-     <div class="justify-content-between text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
-            <h6 class="col-auto"  @onclick="NavigateBack">Назад</h6>
-     </div>
+    <div class="container">
+        <div class="row justify-content-between text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
+            <div class="col-auto text-left">
+               <h6 @onclick="NavigateBack">Назад</h6>
+            </div>
+            <div class="col-auto text-left">
+               <h6 @onclick="NavigateBack">Добавить</h6>
+            </div>
+        </div>
+    </div>
 
     <ol class="list-group d-flex justify-content-between ">
         @foreach (var counter in CounterGroup.Counters)
         {
             <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
-              <CounterSliderElement Model=counter/>
+              <CounterSliderElement Counter=counter/>
             </li>
         }
     </ol>

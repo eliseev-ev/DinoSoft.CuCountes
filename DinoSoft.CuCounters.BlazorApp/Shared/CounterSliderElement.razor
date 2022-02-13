@@ -10,7 +10,7 @@
         <div class="col-auto" style="padding-top:3px; padding-bottom:3px;" @onclick="NavigateToCounterComponent">
             <div class="row justify-content-between" >
                <div class="col-2 justify-content-start text-left">
-                   <i style="font-size: 40px; color: @Model.IconColor" class="@Model.IconName"/>
+                   <i style="font-size: 40px; color: @Counter.IconColor" class="@Counter.IconName"/>
                </div>
                <div class="col-auto text-right align-middle">
                    <div>
@@ -29,7 +29,7 @@
             </div>
             <div class="row justify-content-between" style="height:10px">
                 <div class="col-auto text-left">
-                    <h6>@Model.Name</h6>
+                    <h6>@Counter.Name</h6>
                 </div>
                 <div class="col-auto justify-content-end text-right cuc-text-sub">
                     <h6>@updatedDate</h6>
@@ -39,10 +39,10 @@
 
          <div class="col-auto d-flex align-self-stretch justify-content-between">
             <div class="row d-flex align-self-stretch justify-content-between">
-                <div class="col-auto text-center align-middle cuc-button-add text-success border-end" @onclick="@(e => Model.AddValue(1))">
+                <div class="col-auto text-center align-middle cuc-button-add text-success border-end" @onclick="@(e => Counter.AddValue(1))">
                     <i style="color: darkgray; font-size: 30px;" class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.PlusSquareFill)"/>
                 </div>
-                <div class="col-auto text-center align-middle cuc-button-sub text-danger" @onclick="@(e => Model.AddValue(-1))">
+                <div class="col-auto text-center align-middle cuc-button-sub text-danger" @onclick="@(e => Counter.AddValue(-1))">
                      <i style="color: darkgray; font-size: 30px; " class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.DashSquareFill)"/>
                 </div>
             </div>
@@ -55,13 +55,13 @@
 @code {
     // Demonstrates how a parent component can supply parameters
     [Parameter]
-    public Counter Model { get; set; }
+    public Counter Counter { get; set; }
 
-    private int[] values => Model.Value.ToArray();
+    private int[] values => Counter.Value.ToArray();
 
     private string updatedDate => 
-        Model.LastUpdated.HasValue ? 
-        (Model.LastUpdated.Value.Date == DateTime.Now.Date ? Model.LastUpdated.Value.ToString("hh:mm") : Model.LastUpdated.Value.ToString("g"))
+        Counter.LastUpdated.HasValue ? 
+        (Counter.LastUpdated.Value.Date == DateTime.Now.Date ? Counter.LastUpdated.Value.ToString("hh:mm") : Counter.LastUpdated.Value.ToString("g"))
         : string.Empty;
 
     private RefreshToken refreshToken = new RefreshToken();
@@ -73,6 +73,6 @@
 
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo($"counter-groups/{Model.CounterGroupId}/counters/{Model.Id}");
+        NavigationManager.NavigateTo($"counter-groups/{Counter.CounterGroupId}/counters/{Counter.Id}");
     }
 }

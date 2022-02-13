@@ -1,6 +1,7 @@
 ﻿using DinoSoft.CuCounters.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace DinoSoft.CuCounters.Domain.Model
             set => this.counter.SortOrder = value;
         }
 
+        [Required]
+        [StringLength(30, ErrorMessage = "Name is too long.")]
         public string Name
         {
             get => this.counter.Name;
@@ -43,6 +46,8 @@ namespace DinoSoft.CuCounters.Domain.Model
             set => this.counter.IconColor = value;
         }
 
+        [Required]
+        [Range(-999999, 999999, ErrorMessage = "Accommodation invalid (-999999-999999).")]
         public int Value
         {
             get => this.counter.Value;
