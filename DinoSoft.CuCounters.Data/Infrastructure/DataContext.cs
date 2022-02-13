@@ -49,20 +49,20 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                         IconColor = "#0000FF",
                         Counters = new List<Data.Model.Counter>()
                         {
-                            GenCounter(counterGroupId, "#00FF00"),
-                            GenCounter(counterGroupId, "#0000FF"),
-                            GenCounter(counterGroupId, "#00FFFF"),
-                            GenCounter(counterGroupId, "#FFFF00"),
-                            GenCounter(counterGroupId, "#FFF000"),
-                            GenCounter(counterGroupId, "#F00F00"),
-                            GenCounter(counterGroupId, "#12F300"),
-                            GenCounter(counterGroupId, "#1200FF"),
-                            GenCounter(counterGroupId, "#00FFFF"),
-                            GenCounter(counterGroupId, "#F0F0F0"),
-                            GenCounter(counterGroupId, "#0FFF00"),
-                            GenCounter(counterGroupId, "#0000FF"),
-                            GenCounter(counterGroupId, "#00FF00"),
-                            GenCounter(counterGroupId, "#00FF00"),
+                            GenCounter(counterGroupId, "#bd34b9", "bi-dice-3", "Карма"),
+                            GenCounter(counterGroupId, "#d82b37", "bi-arrow-through-heart", "Любовь"),
+                            GenCounter(counterGroupId, "#d2f589", "bi-bag", "Шопинг"),
+                            GenCounter(counterGroupId, "#89d0f5", "bi-chat-left-dots", "Общение"),
+                            GenCounter(counterGroupId, "#661919", "bi-cup-fill", "Чашек кофе"),
+                            GenCounter(counterGroupId, "#9da312", "bi-lightning-charge", "Сила"),
+                            GenCounter(counterGroupId, "#12F300", "bi-mortarboard", "Интелект"),
+                            GenCounter(counterGroupId, "#107380", "bi-palette", "Вдохновение"),
+                            GenCounter(counterGroupId, "#0f2780", "bi-journal-bookmark", "Занятий"),
+                            GenCounter(counterGroupId, "#1200FF", "bi-piggy-bank", "Что-то"),
+                            GenCounter(counterGroupId, "#00FFFF", "bi-person-video", "Бла бла"),
+                            GenCounter(counterGroupId, "#0FFF00", "bi-map-fill", "asdfqwe dsa 123"),
+                            GenCounter(counterGroupId, "#0000FF", "bi-key", "ыфв1"),
+                            GenCounter(counterGroupId, "#00FF00", "bi-graph-down", "ASd"),
                         }
                     });
             }
@@ -70,13 +70,13 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
             this.CounterGroups.AddRange(counterGroups);
             this.SaveChanges();
 
-            Data.Model.Counter GenCounter(Guid counterGroupId, string color) => new Data.Model.Counter()
+            Data.Model.Counter GenCounter(Guid counterGroupId, string color, string iconName, string name) => new Data.Model.Counter()
             {
                 Id = Guid.NewGuid(),
                 CounterGroupId = counterGroupId,
                 Value = 1,
-                Name = $"Карма",
-                IconName = "bi-diamond",
+                Name = name,
+                IconName = iconName,
                 IconColor = color,
                 SortOrder = 0,
                 CounterActions = new List<Data.Model.CounterAction>

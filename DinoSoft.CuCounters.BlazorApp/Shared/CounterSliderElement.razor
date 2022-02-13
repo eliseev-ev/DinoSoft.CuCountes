@@ -6,7 +6,16 @@
 @inject NavigationManager NavigationManager
 
 <div class="container list-group-item cuc-bg cuc-text shadow" style="padding-top:0px; padding-bottom:0px;">
-    <div class="row justify-content-between" style="height:90px; padding-right:10px;" >
+    <div class="row justify-content-between" style="height:90px; padding-right:0px;" >
+
+        <div class="col-auto d-flex justify-content-between">
+            <div class="row d-flex justify-content-between">
+                <div class="button-up d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #145c00a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(1))">
+                    <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowUp) align-self-center" style="color: darkgray; font-size: 30px;"/>
+                </div>
+            </div>
+        </div>
+
         <div class="col-auto" style="padding-top:3px; padding-bottom:3px;" @onclick="NavigateToCounterComponent">
             <div class="row justify-content-between" >
                <div class="col-2 justify-content-start text-left">
@@ -37,11 +46,8 @@
             </div>
         </div>
 
-         <div class="col-auto d-flex justify-content-between">
+        <div class="col-auto d-flex justify-content-between">
             <div class="row d-flex justify-content-between">
-                <div class="button-up d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #145c00a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(1))">
-                    <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowUp) align-self-center" style="color: darkgray; font-size: 30px;"/>
-                </div>
                 <div class="button-down d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #5c0000a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(-1))">
                      <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowDown) align-self-center" style="color: darkgray; font-size: 30px;"/>
                 </div>
