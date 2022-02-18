@@ -46,6 +46,19 @@
             </div>
         </div>
     </div>
+    <div class="container d-flex align-self-end flex-wrap align-bottom" >
+        <EditForm EditContext="@editContext" OnValidSubmit="@AddValue">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <InputNumber id="name" class="form-control" @bind-Value="@addValueModel.AddingValue"  />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary ">Confirm</button>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+
 </LayoutView>
 
 
@@ -60,10 +73,16 @@
 
     public Counter counter { get; set; }
 
+    private EditContext editContext;
+
+    private AddValueModel addValueModel = new AddValueModel();
+
+
     private int[] values => counter.Value.ToArray();
 
     protected override async Task OnInitializedAsync()
     {
+        editContext = new EditContext(addValueModel);
         counter = (await counterGroupManager.GetCounterGroups()).First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
     }
 
@@ -74,6 +93,21 @@
 
     private void NavigateEdit()
     {
-         NavigationManager.NavigateTo(Links.CounterEditPage(CounterGroupId, Id));
+        NavigationManager.NavigateTo(Links.CounterEditPage(CounterGroupId, Id));
+    }
+
+    private void AddValue()
+    {
+        if (addValueModel.AddingValue.HasValue && addValueModel.AddingValue.Value != 0)
+        {
+            counter.AddValue(addValueModel.AddingValue.Value);
+        }
+
+        addValueModel.AddingValue = null;
+    }
+
+    private class AddValueModel
+    {
+        public int? AddingValue { get; set; }
     }
 }
