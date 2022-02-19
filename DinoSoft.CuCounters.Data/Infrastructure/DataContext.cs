@@ -24,7 +24,7 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
             optionsBuilder.UseInMemoryDatabase("db");
         }
 
-        public DbSet<CounterGroup> CounterGroups { get; set; }
+        public DbSet<Group> CounterGroups { get; set; }
 
         public DbSet<Counter> Counters { get; set; }
 
@@ -34,10 +34,10 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
 
         private void Populate()
         {
-            var counterGroups = new List<Data.Model.CounterGroup>();
+            var counterGroups = new List<Data.Model.Group>();
 
             counterGroups.Add(
-                new Data.Model.CounterGroup
+                new Data.Model.Group
                 {
                     Name = $"Папка 1",
                     Id = Guid.NewGuid(),
@@ -51,9 +51,9 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                         GenCounter("#89d0f5", "bi-chat-left-dots", "Общение"),
                         GenCounter("#661919", "bi-cup-fill", "Чашек кофе"),                  
                     },
-                    CounterGroups = new List<CounterGroup>
+                    Groups = new List<Group>
                     {
-                        new Data.Model.CounterGroup
+                        new Data.Model.Group
                         {
                             Name = $"Подпапка",
                             Id = Guid.NewGuid(),
@@ -66,7 +66,7 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                                 GenCounter("#107380", "bi-palette", "Вдохновение"),
                                 GenCounter("#0f2780", "bi-journal-bookmark", "Занятий"),
                             },
-                            CounterGroups = new List<CounterGroup>()
+                            Groups = new List<Group>()
                         }
                     }
                 });

@@ -1,7 +1,7 @@
 ﻿@page "/counter-groups/{id:guid}"
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
-@inject CounterGroupManager counterGroupManager
+@inject GroupManager counterGroupManager
 @inject NavigationManager NavigationManager
 
 <LayoutView>
@@ -17,7 +17,7 @@
     </div>
 
     <ol class="list-group d-flex justify-content-between ">
-        @foreach (var counterGroup in counterGroup.CounterGroups)
+        @foreach (var counterGroup in counterGroup.Groups)
         {
             <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
               <CounterGroupSliderElement CounterGroup=counterGroup/>
@@ -38,7 +38,7 @@
     [Parameter]
     public  Guid id { get; set; }
 
-    private DinoSoft.CuCounters.Domain.Model.CounterGroup counterGroup;
+    private DinoSoft.CuCounters.Domain.Model.Group counterGroup;
 
     protected override async Task OnInitializedAsync()
     {

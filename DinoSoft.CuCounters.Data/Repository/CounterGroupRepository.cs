@@ -6,19 +6,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DinoSoft.CuCounters.Data.Repository
 {
-    public class CounterGroupRepository : AbstractRepository<Guid, CounterGroup>
+    public class CounterGroupRepository : AbstractRepository<Guid, Group>
     {
         public CounterGroupRepository(DataContext context)
             : base(context)
         {
         }
 
-        protected override IQueryable<CounterGroup> Query(bool tracking)
+        protected override IQueryable<Group> Query(bool tracking)
         {
             return base.Query(tracking)
                 .Include(x => x.Counters)
                     .ThenInclude(x => x.CounterActions)
-                .Include(x => x.CounterGroups);
+                .Include(x => x.Groups);
         }
     }
 }

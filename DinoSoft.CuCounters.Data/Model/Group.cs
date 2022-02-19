@@ -2,7 +2,7 @@
 
 namespace DinoSoft.CuCounters.Data.Model
 {
-    public class CounterGroup : IdNameModel
+    public class Group : IdNameModel
     {
         public int SortOrder { get; set; }
 
@@ -14,7 +14,7 @@ namespace DinoSoft.CuCounters.Data.Model
 
         public Guid? CounterGroupId { get; set; }
 
-        public List<CounterGroup> CounterGroups { get; set; }
+        public List<Group> Groups { get; set; }
 
         public List<Counter> Counters { get; set; }
         

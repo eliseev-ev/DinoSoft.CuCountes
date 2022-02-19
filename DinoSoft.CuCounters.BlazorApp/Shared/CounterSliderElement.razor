@@ -79,6 +79,6 @@
 
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo($"counter-groups/{Counter.CounterGroupId}/counters/{Counter.Id}");
+        NavigationManager.NavigateTo(Links.CounterPage(Counter.CounterGroupId, Counter.Id));
     }
 }

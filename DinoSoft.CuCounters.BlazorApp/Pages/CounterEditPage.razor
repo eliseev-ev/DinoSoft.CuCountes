@@ -3,7 +3,7 @@
 @using DinoSoft.CuCounters.BlazorApp.Infrastructure.Helpers
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
-@inject CounterGroupManager counterGroupManager
+@inject GroupManager counterGroupManager
 @inject NavigationManager NavigationManager
 
 <LayoutView>
@@ -66,7 +66,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        counter = (await counterGroupManager.GetCounterGroups()).First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
+        counter = (await counterGroupManager.GetGroups()).First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
         editContext = new EditContext(counter);
         editContext.OnFieldChanged += (_,__) => 
         { 

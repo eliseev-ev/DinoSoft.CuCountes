@@ -18,7 +18,7 @@
 
 @code {
     [Parameter]
-    public DinoSoft.CuCounters.Domain.Model.CounterGroup CounterGroup { get; set; }
+    public DinoSoft.CuCounters.Domain.Model.Group CounterGroup { get; set; }
 
 
     private RefreshToken refreshToken = new RefreshToken();
@@ -30,6 +30,6 @@
 
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo(Links.CounterGroupPage(CounterGroup.Id)); 
+        NavigationManager.NavigateTo(Links.GroupPage(CounterGroup.Id)); 
     }
 }

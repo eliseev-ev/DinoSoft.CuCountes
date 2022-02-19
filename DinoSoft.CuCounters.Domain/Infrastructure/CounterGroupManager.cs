@@ -4,34 +4,32 @@ using DinoSoft.CuCounters.Domain.Model;
 
 namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
-    public class CounterGroupManager
+    public class GroupManager
     {
         private readonly CounterGroupRepository counterGroupRepository;
 
-        public CounterGroupManager(CounterGroupRepository counterGroupRepository)
+        public GroupManager(CounterGroupRepository counterGroupRepository)
         {
             this.counterGroupRepository = counterGroupRepository;
         }
 
-        public async Task<CounterGroup> GetRootCounterGroup()
+        public async Task<Group> GetRootCounterGroup()
         {
             var counterGroup = await counterGroupRepository.FirstOrDefault(x => !x.CounterGroupId.HasValue);
-            return new CounterGroup(counterGroup);
+            return new Group(counterGroup);
         }
 
-        public async Task<CounterGroup> GetCounterGroup(Guid id)
+        public async Task<Group> GetCounterGroup(Guid id)
         {
             var counterGroup = await counterGroupRepository.Get(id);
-            return new CounterGroup(counterGroup);
+            return new Group(counterGroup);
         }
 
-        public async Task<IEnumerable<CounterGroup>> GetCounterGroups()
+        public async Task<IEnumerable<Group>> GetGroups()
         {
-            // todo: DataContext init
-            //dataContext = InitAndSaveTestDataContext();
             var counterGroups = await counterGroupRepository.Get(x => true);
 
-            return counterGroups.Select(x => new CounterGroup(x));
+            return counterGroups.Select(x => new Group(x));
         }
     }
 }
