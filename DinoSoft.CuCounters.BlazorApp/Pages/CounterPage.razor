@@ -2,7 +2,7 @@
 @using DinoSoft.CuCounters.Common.Extensions
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
-@inject CounterGroupManager counterGroupManager
+@inject CounterManager counterManager
 @inject NavigationManager NavigationManager
 
 <LayoutView>
@@ -66,10 +66,10 @@
 @code {
 
     [Parameter]
-    public  Guid CounterGroupId { get; set; }
+    public  Guid counterGroupId { get; set; }
 
     [Parameter]
-    public  Guid Id { get; set; }
+    public  Guid id { get; set; }
 
     public Counter counter { get; set; }
 
@@ -83,17 +83,17 @@
     protected override async Task OnInitializedAsync()
     {
         editContext = new EditContext(addValueModel);
-        counter = (await counterGroupManager.GetCounterGroups()).First(x => x.Id == CounterGroupId).Counters.First(x => x.Id == Id);
+        counter = await counterManager.GetCounter(id);
     }
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo(Links.CounterGroupPage(CounterGroupId));
+        NavigationManager.NavigateTo(Links.CounterGroupPage(counterGroupId));
     }
 
     private void NavigateEdit()
     {
-        NavigationManager.NavigateTo(Links.CounterEditPage(CounterGroupId, Id));
+        NavigationManager.NavigateTo(Links.CounterEditPage(counterGroupId, id));
     }
 
     private void AddValue()

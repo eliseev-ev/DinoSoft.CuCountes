@@ -4,32 +4,52 @@ using DinoSoft.CuCounters.Domain.Model;
 
 namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
+    /// <summary>
+    /// Менеджер групп.
+    /// </summary>
     public class CounterGroupManager
     {
         private readonly CounterGroupRepository counterGroupRepository;
 
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="counterGroupRepository">Репозиторий групп.</param>
         public CounterGroupManager(CounterGroupRepository counterGroupRepository)
         {
             this.counterGroupRepository = counterGroupRepository;
         }
 
-        public async Task<CounterGroup> GetRootCounterGroup()
+        /// <summary>
+        /// Получить родительскую группу.
+        /// </summary>
+        /// <returns>Группа.</returns>
+        public async Task<Group> GetRootCounterGroup()
         {
             var counterGroup = await counterGroupRepository.FirstOrDefault(x => !x.CounterGroupId.HasValue);
-            return new CounterGroup(counterGroup);
+            return new Group(counterGroup);
         }
 
-        public async Task<CounterGroup> GetCounterGroup(Guid id)
+        /// <summary>
+        /// Получить группу по идентификатору.
+        /// </summary>
+        /// <param name="id">Иденитфикатор.</param>
+        /// <returns>Группа.</returns>
+        public async Task<Group> GetCounterGroup(Guid id)
         {
             var counterGroup = await counterGroupRepository.Get(id);
-            return new CounterGroup(counterGroup);
+            return new Group(counterGroup);
         }
 
-        public async Task<IEnumerable<CounterGroup>> GetCounterGroups()
+        /// <summary>
+        /// Получить группы.
+        /// </summary>
+        /// <returns>Группы.</returns>
+        public async Task<IEnumerable<Group>> GetCounterGroups()
         {
             var counterGroups = await counterGroupRepository.Get(x => true);
 
-            return counterGroups.Select(x => new CounterGroup(x));
+            return counterGroups.Select(x => new Group(x));
         }
     }
 }
