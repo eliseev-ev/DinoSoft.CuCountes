@@ -17,7 +17,13 @@
     </div>
 
     <ol class="list-group d-flex justify-content-between ">
-        @foreach (var counter in CounterGroup.Counters)
+        @foreach (var counterGroup in counterGroup.CounterGroups)
+        {
+            <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
+              <CounterGroupSliderElement CounterGroup=counterGroup/>
+            </li>
+        }
+        @foreach (var counter in counterGroup.Counters)
         {
             <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
               <CounterSliderElement Counter=counter/>
@@ -32,11 +38,11 @@
     [Parameter]
     public  Guid id { get; set; }
 
-    private DinoSoft.CuCounters.Domain.Model.CounterGroup CounterGroup;
+    private DinoSoft.CuCounters.Domain.Model.CounterGroup counterGroup;
 
     protected override async Task OnInitializedAsync()
     {
-        CounterGroup = (await counterGroupManager.GetCounterGroups()).First(x => x.Id == id);
+        counterGroup = await counterGroupManager.GetCounterGroup(id);
     }
 
     private void NavigateBack()

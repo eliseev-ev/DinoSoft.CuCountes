@@ -12,7 +12,11 @@ namespace DinoSoft.CuCounters.Data.Model
         /// <summary> Имя Цвет. </summary>
         public string IconColor { get; set; } = "#112233";
 
-        public new List<Counter> Counters { get; set; }
+        public Guid? CounterGroupId { get; set; }
+
+        public List<CounterGroup> CounterGroups { get; set; }
+
+        public List<Counter> Counters { get; set; }
         
     }
 }

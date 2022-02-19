@@ -1,27 +1,40 @@
 ﻿@page "/"
-@using DinoSoft.CuCounters.Data.Infrastructure
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
 @inject CounterGroupManager counterGroupManager
+@inject NavigationManager NavigationManager
 
 <LayoutView>
-<ol class="list-group d-flex justify-content-between ">
-@foreach (var counterGroup in counterGroups)
-{
-    <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
-        <CounterGroupSliderElement CounterGroup=counterGroup/>
-    </li>
-}
-</ol>
+    <div class="container">
+        <div class="row justify-content-between text-warning border-bottom border-warning header-bg" style="height:60px; padding:20px;">
+            <div class="col-auto text-left">
+               <h6 >Добавить</h6>
+            </div>
+        </div>
+    </div>
+
+    <ol class="list-group d-flex justify-content-between ">
+        @foreach (var counterGroup in counterGroup.CounterGroups)
+        {
+            <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
+              <CounterGroupSliderElement CounterGroup=counterGroup/>
+            </li>
+        }
+        @foreach (var counter in counterGroup.Counters)
+        {
+            <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
+              <CounterSliderElement Counter=counter/>
+            </li>
+        }
+    </ol>
 </LayoutView>
 
 
-
 @code {
-	private IEnumerable<DinoSoft.CuCounters.Domain.Model.CounterGroup> counterGroups;
+    private DinoSoft.CuCounters.Domain.Model.CounterGroup counterGroup;
 
-	protected override async Task OnInitializedAsync()
-	{
-		counterGroups = await counterGroupManager.GetCounterGroups();
-	}
+    protected override async Task OnInitializedAsync()
+    {
+        counterGroup = await counterGroupManager.GetRootCounterGroup();
+    }
 }

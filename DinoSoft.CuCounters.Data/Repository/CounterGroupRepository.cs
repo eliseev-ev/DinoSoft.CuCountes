@@ -17,7 +17,8 @@ namespace DinoSoft.CuCounters.Data.Repository
         {
             return base.Query(tracking)
                 .Include(x => x.Counters)
-                    .ThenInclude(x => x.CounterActions);
+                    .ThenInclude(x => x.CounterActions)
+                .Include(x => x.CounterGroups);
         }
     }
 }

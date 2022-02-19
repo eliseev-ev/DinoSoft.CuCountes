@@ -13,6 +13,18 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
             this.counterGroupRepository = counterGroupRepository;
         }
 
+        public async Task<CounterGroup> GetRootCounterGroup()
+        {
+            var counterGroup = await counterGroupRepository.FirstOrDefault(x => !x.CounterGroupId.HasValue);
+            return new CounterGroup(counterGroup);
+        }
+
+        public async Task<CounterGroup> GetCounterGroup(Guid id)
+        {
+            var counterGroup = await counterGroupRepository.Get(id);
+            return new CounterGroup(counterGroup);
+        }
+
         public async Task<IEnumerable<CounterGroup>> GetCounterGroups()
         {
             // todo: DataContext init
