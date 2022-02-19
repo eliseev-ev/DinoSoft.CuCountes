@@ -27,8 +27,6 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
 
         public async Task<IEnumerable<CounterGroup>> GetCounterGroups()
         {
-            // todo: DataContext init
-            //dataContext = InitAndSaveTestDataContext();
             var counterGroups = await counterGroupRepository.Get(x => true);
 
             return counterGroups.Select(x => new CounterGroup(x));
