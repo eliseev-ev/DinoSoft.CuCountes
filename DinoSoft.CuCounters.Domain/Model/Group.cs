@@ -26,6 +26,8 @@ namespace DinoSoft.CuCounters.Domain.Model
 
         public Guid Id  => this.group.Id;
 
+        public Guid? CounterGroupId => this.group.CounterGroupId;
+
         public String Name => this.group.Name;
 
         public String IconName => this.group.IconName;

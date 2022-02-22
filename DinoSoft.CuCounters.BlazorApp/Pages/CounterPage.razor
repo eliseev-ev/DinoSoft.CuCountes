@@ -1,8 +1,8 @@
-﻿@page "/counter-groups/{CounterGroupId:guid}/counters/{Id:guid}"
+﻿@page "/counter-groups/{GroupId:guid}/counters/{Id:guid}"
 @using DinoSoft.CuCounters.Common.Extensions
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
-@inject GroupManager groupManager
+@inject CounterManager counterManager
 @inject NavigationManager NavigationManager
 
 <LayoutView>
@@ -83,7 +83,7 @@
     protected override async Task OnInitializedAsync()
     {
         editContext = new EditContext(addValueModel);
-        counter = (await groupManager.GetGroups()).First(x => x.Id == GroupId).Counters.First(x => x.Id == Id);
+        counter = await counterManager.GetCounter(Id);
     }
 
     private void NavigateBack()

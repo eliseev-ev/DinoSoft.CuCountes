@@ -27,6 +27,7 @@ namespace DinoSoft.CuCounters.BlazorApp
             builder.Services.AddScoped<CounterRepository>();
             builder.Services.AddScoped<CounterActionRepository>();
             builder.Services.AddScoped<GroupManager>();
+            builder.Services.AddScoped<CounterManager>();
             builder.Services.AddDbContext<DataContext>();
 
             return builder.Build();

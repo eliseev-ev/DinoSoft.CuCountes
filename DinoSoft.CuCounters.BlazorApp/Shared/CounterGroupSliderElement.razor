@@ -3,7 +3,7 @@
 @using DinoSoft.CuCounters.Domain.Model
 @inject NavigationManager NavigationManager
 
-<div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToCounterComponent">
+<div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToGroupPage">
     <div class="row justify-content-between" style="height:75px">
         <div class="col-2 justify-content-start text-left">
             <i style="font-size: 45px;" class="@CounterGroup.IconName cuc-style-2"/>
@@ -20,7 +20,6 @@
     [Parameter]
     public DinoSoft.CuCounters.Domain.Model.Group CounterGroup { get; set; }
 
-
     private RefreshToken refreshToken = new RefreshToken();
 
     protected override async Task OnInitializedAsync()
@@ -28,7 +27,7 @@
         refreshToken.Add(StateHasChanged);
     }
 
-    private void NavigateToCounterComponent()
+    private void NavigateToGroupPage()
     {
         NavigationManager.NavigateTo(Links.GroupPage(CounterGroup.Id)); 
     }

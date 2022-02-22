@@ -18,6 +18,7 @@ namespace DinoSoft.CuCounters.Domain.Model
         }
 
         public Guid Id => counter.Id;
+
         public Guid CounterGroupId => counter.CounterGroupId;
 
         public int SortOrder

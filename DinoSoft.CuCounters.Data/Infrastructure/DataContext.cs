@@ -22,6 +22,20 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
             //optionsBuilder
             //    .UseSqlite($"Filename={dbPath}");
             optionsBuilder.UseInMemoryDatabase("db");
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Group>()
+                .HasMany(x => x.Groups)
+                .WithOne()
+                .HasForeignKey(x => x.CounterGroupId);
+
+            modelBuilder.Entity<Group>()
+                .HasMany(x => x.Counters)
+                .WithOne()
+                .HasForeignKey(x => x.CounterGroupId);
         }
 
         public DbSet<Group> CounterGroups { get; set; }
