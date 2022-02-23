@@ -4,7 +4,7 @@
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
 @inject GroupManager counterGroupManager
-@inject NavigationManager NavigationManager
+@inject NavigationService navigationService
 
 <LayoutView>
     <div class="container">
@@ -76,7 +76,7 @@
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo(Links.CounterPage(CounterGroupId, Id));
+        navigationService.NavigateTo(Links.CounterPage(CounterGroupId, Id));
     }
 
     private void Save()

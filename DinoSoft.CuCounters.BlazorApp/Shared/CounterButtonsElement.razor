@@ -1,5 +1,5 @@
 ﻿@using DinoSoft.CuCounters.Domain.Model
-@inject NavigationManager NavigationManager
+@inject NavigationService navigationService
 
 <div class="align-middle justify-content-end align-self-center">
     <div>
@@ -30,6 +30,6 @@
 
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo($"counter-groups/{Model.CounterGroupId}/counters/{Model.Id}/edit");
+        navigationService.NavigateTo($"counter-groups/{Model.CounterGroupId}/counters/{Model.Id}/edit");
     }
 }

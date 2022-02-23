@@ -22,7 +22,11 @@ namespace DinoSoft.CuCounters.BlazorApp
 
             builder.Services.AddBlazorWebView();
             builder.Services.AddSingleton<WeatherForecastService>();
+            
+            // Infrastructure
+            builder.Services.AddScoped<NavigationService>();
 
+            // Repositories && Managers
             builder.Services.AddScoped<CounterGroupRepository>();
             builder.Services.AddScoped<CounterRepository>();
             builder.Services.AddScoped<CounterActionRepository>();

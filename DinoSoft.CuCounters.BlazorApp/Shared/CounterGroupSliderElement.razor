@@ -1,7 +1,7 @@
 ﻿@using DinoSoft.CuCounters.BlazorApp.Pages
 @using DinoSoft.CuCounters.Common.Extensions
 @using DinoSoft.CuCounters.Domain.Model
-@inject NavigationManager NavigationManager
+@inject NavigationService navigationService
 
 <div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToGroupPage">
     <div class="row justify-content-between" style="height:75px">
@@ -29,6 +29,6 @@
 
     private void NavigateToGroupPage()
     {
-        NavigationManager.NavigateTo(Links.GroupPage(CounterGroup.Id)); 
+        navigationService.NavigateTo(Links.GroupPage(CounterGroup.Id)); 
     }
 }

@@ -2,7 +2,7 @@
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
 @inject GroupManager groupManager
-@inject NavigationManager navigationManager
+@inject NavigationService navigationService
 
 <LayoutView>
 @*    <div class="container">
@@ -36,6 +36,6 @@
     protected override async Task OnInitializedAsync()
     {
         var group = await groupManager.GetRootCounterGroup();
-        navigationManager.NavigateTo(Links.GroupPage(group.Id));
+        navigationService.NavigateTo(Links.GroupPage(group.Id));
     }
 }

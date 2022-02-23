@@ -3,7 +3,7 @@
 @using DinoSoft.CuCounters.Domain.Model
 @using DinoSoft.CuCounters.Domain.Infrastructure
 @inject CounterManager counterManager
-@inject NavigationManager NavigationManager
+@inject NavigationService navigationService
 
 <LayoutView>
      <div class="container">
@@ -88,12 +88,12 @@
 
     private void NavigateBack()
     {
-        NavigationManager.NavigateTo(Links.GroupPage(GroupId));
+        navigationService.NavigateTo(Links.GroupPage(GroupId));
     }
 
     private void NavigateEdit()
     {
-        NavigationManager.NavigateTo(Links.CounterEditPage(GroupId, Id));
+        navigationService.NavigateTo(Links.CounterEditPage(GroupId, Id));
     }
 
     private void AddValue()
