@@ -4,14 +4,16 @@
 @inject NavigationService navigationService
 
 <div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToGroupPage">
-    <div class="row justify-content-between" style="height:75px">
-        <div class="col-2 justify-content-start text-left">
-            <i style="font-size: 45px;" class="@CounterGroup.IconName cuc-style-2"/>
+    <div class="row justify-content-between" style="height:50px">
+        <div class="col justify-content-start text-left">
+            <h3>
+                <i class="@CounterGroup.IconName cuc-style-2"/>
+                @CounterGroup.Name
+            </h3>
         </div>
-        <div class="col-auto text-left cuc-text">
+@*        <div class="col-auto text-left cuc-text">
              <h3>@CounterGroup.Name</h3>
-             <h5>3</h5>
-        </div>
+        </div>*@
     </div>
 
 </div>

@@ -2,7 +2,7 @@
     Звездочка обязательна, чтобы передавть слешы. 
     Подробнее тут https://docs.microsoft.com/ru-ru/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-5.0
 *@
-@page "/navigation-proxy/{pageRoute}"
+@page "/navigation-proxy/{*pageRoute}"
 @inject NavigationManager navigationManager
 
 <LayoutView>

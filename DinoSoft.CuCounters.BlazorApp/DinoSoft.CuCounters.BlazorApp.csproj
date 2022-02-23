@@ -1747,7 +1747,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Infrastructure\Constants\" />
 	  <Folder Include="Infrastructure\Helpers\" />
 	  <Folder Include="Infrastructure\Pages\" />
 	</ItemGroup>
