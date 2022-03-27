@@ -23,13 +23,13 @@
         <ol class="list-group d-flex justify-content-between">
             @foreach (var group in counterGroup.Groups)
             {
-                <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg @Animates.Flippers.FlipInX">
+                <li class="list-group-flush border-secondary rounded scrollarea main-bg @Animates.Flippers.FlipInX">
                   <CounterGroupSliderElement CounterGroup=group/>
                 </li>
             }
             @foreach (var counter in counterGroup.Counters)
             {
-                <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg @Animates.Flippers.FlipInX">
+                <li class="list-group-flush border-secondary rounded scrollarea main-bg @Animates.Flippers.FlipInX">
                   <CounterSliderElement Counter=counter/>
                 </li>
             }

@@ -5,40 +5,35 @@
 @using DinoSoft.CuCounters.Domain.Model
 @inject NavigationService navigationService
 
-<div class="container list-group-item cuc-bg cuc-text shadow" style="padding-top:0px; padding-bottom:0px;">
-    <div class="row justify-content-between" style="height:90px; padding-right:0px;" >
+<div class="container list-group-item cuc-counter-bg cuc-text shadow" style="padding-top:0px; padding-bottom:0px;">
+    <div class="row justify-content-between" style="height:92px; padding-right:0px;" >
 
-        <div class="col-auto d-flex justify-content-between">
-            <div class="row d-flex justify-content-between">
-                <div class="button-up d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #145c00a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(1))">
-                    <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowUp) align-self-center" style="color: darkgray; font-size: 30px;"/>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-auto" style="padding-top:3px; padding-bottom:3px;" @onclick="NavigateToCounterComponent">
+        <div class="col" style="padding-top:3px; padding-bottom:3px;" @onclick="NavigateToCounterComponent">
             <div class="row justify-content-between" >
-               <div class="col-2 justify-content-start text-left">
-                   <i style="font-size: 40px; color: @Counter.IconColor" class="@Counter.IconName"/>
-               </div>
-               <div class="col-auto text-right align-middle">
-                   <div>
-                       @for (var i = values.Length; i < 6; i++)
-                       {
-                           <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">0</div>
-                       }
+               <div class="col-auto justify-content-start text-left">
+                    <div class="cuc-icon-circle">
+                        <i style="font-size: 30px; color: @Counter.IconColor" class="@Counter.IconName "/>
+                    </div>
+                </div>
+                <div class="col text-right align-middle">
+                    <div>
+                        @for (var i = values.Length; i < 6; i++)
+                        {
+                            <div class="btn btn-sm text-black align-middle" style="margin: 10px 1px 1px 1px; background:#dce3e6;">0</div>
+                        }
 
-                       @foreach (var value in values)
-                       {
-                           <div class="btn btn-sm btn-light text-black align-middle" style="margin: 10px 1px 1px 1px">@value</div>
-                       }
-                   </div>
-                   <span class="badge bg-success ">+1</span>
-               </div>
+                        @foreach (var value in values)
+                        {
+                            <div class="btn btn-sm text-black align-middle" style="margin: 10px 1px 1px 1px; background:#dce3e6;">@value</div>
+                        }
+                    </div>
+                    <span class="badge bg-success ">+1</span>
+                </div>
             </div>
             <div class="row justify-content-between" style="height:10px">
                 <div class="col-auto text-left">
-                    <h6>@Counter.Name</h6>
+                    <h6 style="margin-top: 2px" class="cuc-text"> @Counter.Name</h6>
                 </div>
                 <div class="col-auto justify-content-end text-right cuc-text-sub">
                     <h6>@updatedDate</h6>
@@ -48,7 +43,10 @@
 
         <div class="col-auto d-flex justify-content-between">
             <div class="row d-flex justify-content-between">
-                <div class="button-down d-flex col-auto text-center cuc-button-add text-success" style="background: #171717; box-shadow: inset #5c0000a6 0px 0px 3px 2px;" @onclick="@(e => Counter.AddValue(-1))">
+                <div class="button-up d-flex col-auto text-center cuc-counter-bg" style="text-shadow: 0px 0px 10px lime;" @onclick="@(e => Counter.AddValue(1))">
+                    <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowUp) align-self-center" style="color: darkgray; font-size: 30px;"/>
+                </div>
+                <div class="button-down d-flex col-auto text-center cuc-counter-bg" style="text-shadow: 0px 0px 10px red;" @onclick="@(e => Counter.AddValue(-1))">
                      <i class="@BootStrapIconHelper.GetIcon(BootStrapIconsTypes.ArrowDown) align-self-center" style="color: darkgray; font-size: 30px;"/>
                 </div>
             </div>

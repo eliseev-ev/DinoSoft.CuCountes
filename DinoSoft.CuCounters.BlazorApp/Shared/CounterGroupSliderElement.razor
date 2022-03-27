@@ -3,10 +3,10 @@
 @using DinoSoft.CuCounters.Domain.Model
 @inject NavigationService navigationService
 
-<div class="container list-group-item cuc-bg cuc-text shadow" @onclick="NavigateToGroupPage">
+<div class="container list-group-item cuc-counter-bg cuc-text shadow" @onclick="NavigateToGroupPage">
     <div class="row justify-content-between" style="height:50px">
         <div class="col justify-content-start text-left">
-            <h3>
+            <h3 class="cuc-text">
                 <i class="@CounterGroup.IconName cuc-style-2"/>
                 @CounterGroup.Name
             </h3>

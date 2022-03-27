@@ -71,12 +71,20 @@ a, .btn-link {
 
 /*Colors*/
 
-.cuc-bg {
-	background: #1d1d1d;
+.cuc-layout-bg {
+	background: #F1F1F2;
 }
 
-.cuc-bg-sub {
-	background: #D7DEDB;
+.cuc-bg {
+	background: #BCBABE;
+}
+
+.cuc-sub-bg {
+	background: #f7d7b5;
+}
+
+.cuc-counter-bg {
+	background: #F1F1F2;
 }
 
 .cuc-style {
@@ -88,7 +96,7 @@ a, .btn-link {
 }
 
 .cuc-text {
-	color: #ffffff;
+	color: #231216;
 }
 
 .cuc-text-sub {
@@ -110,7 +118,6 @@ a, .btn-link {
 	text-align: center;
 	cursor: pointer;
 	position: relative;
-	background-color: #16a085;
 	color: #fff;
 	text-align: center;
 	overflow: hidden;
@@ -141,7 +148,6 @@ a, .btn-link {
 	text-align: center;
 	cursor: pointer;
 	position: relative;
-	background-color: #16a085;
 	color: #fff;
 	text-align: center;
 	overflow: hidden;
@@ -165,4 +171,16 @@ a, .btn-link {
 	margin: 0;
 	opacity: 1;
 	transition: 0s
+}
+
+.cuc-icon-circle {
+	width: 50px;
+	height: 50px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	background: #2a2a2a;
+	padding-top: 4px;
+	padding-left: 10px;
+	margin-top:10px;
 }
