@@ -18,6 +18,7 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // Ждем когда заработает sqlite на maui
             //string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "entities.db3");
             //optionsBuilder
             //    .UseSqlite($"Filename={dbPath}");

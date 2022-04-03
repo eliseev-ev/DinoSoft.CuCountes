@@ -74,7 +74,7 @@ namespace DinoSoft.CuCounters.Domain.Model
             this.counter.LastUpdated = DateTime.Now;
         }
 
-        [Obsolete("Сделать приватным, дырка, для теста")]
+        [Obsolete("Сделать приватным, дырка - для теста")]
         public void AddValue(int value)
         {
             this.counter.Value += value;

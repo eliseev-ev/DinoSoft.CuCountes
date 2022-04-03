@@ -1,5 +1,4 @@
-﻿using DinoSoft.CuCounters.BlazorApp.Data;
-using DinoSoft.CuCounters.BlazorApp.Infrastructure;
+﻿using DinoSoft.CuCounters.BlazorApp.Infrastructure;
 using DinoSoft.CuCounters.Data.Infrastructure;
 using DinoSoft.CuCounters.Data.Repository;
 using DinoSoft.CuCounters.Domain.Infrastructure;
@@ -21,7 +20,6 @@ namespace DinoSoft.CuCounters.BlazorApp
                 });
 
             builder.Services.AddBlazorWebView();
-            builder.Services.AddSingleton<WeatherForecastService>();
             
             // Infrastructure
             builder.Services.AddScoped<NavigationService>();
