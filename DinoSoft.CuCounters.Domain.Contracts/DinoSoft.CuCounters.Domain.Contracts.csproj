@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DinoSoft.CuCounters.Data\DinoSoft.CuCounters.Data.csproj" />
-    <ProjectReference Include="..\DinoSoft.CuCounters.Domain.Contracts\DinoSoft.CuCounters.Domain.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

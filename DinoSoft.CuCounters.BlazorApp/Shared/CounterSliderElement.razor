@@ -2,7 +2,7 @@
 @using DinoSoft.CuCounters.BlazorApp.Infrastructure.Helpers
 @using DinoSoft.CuCounters.BlazorApp.Pages
 @using DinoSoft.CuCounters.Common.Extensions
-@using DinoSoft.CuCounters.Domain.Model
+@using DinoSoft.CuCounters.Domain.Contracts.Model
 @inject NavigationService navigationService
 
 <div class="container list-group-item cuc-counter-bg cuc-text shadow" style="padding-top:0px; padding-bottom:0px;">
@@ -59,7 +59,7 @@
 @code {
     // Demonstrates how a parent component can supply parameters
     [Parameter]
-    public Counter Counter { get; set; }
+    public ICounter Counter { get; set; }
 
     private int[] values => Counter.Value.ToArray();
 

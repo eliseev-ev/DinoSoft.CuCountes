@@ -1,6 +1,6 @@
 ﻿@using DinoSoft.CuCounters.BlazorApp.Pages
 @using DinoSoft.CuCounters.Common.Extensions
-@using DinoSoft.CuCounters.Domain.Model
+@using DinoSoft.CuCounters.Domain.Contracts.Model
 @inject NavigationService navigationService
 
 <div class="container list-group-item cuc-counter-bg cuc-text shadow" @onclick="NavigateToGroupPage">
@@ -20,7 +20,7 @@
 
 @code {
     [Parameter]
-    public DinoSoft.CuCounters.Domain.Model.Group CounterGroup { get; set; }
+    public IGroup CounterGroup { get; set; }
 
     private RefreshToken refreshToken = new RefreshToken();
 

@@ -1,11 +1,11 @@
 ﻿using DinoSoft.CuCounters.Data.Contracts.Repository;
-using DinoSoft.CuCounters.Data.Infrastructure;
-using DinoSoft.CuCounters.Data.Repository;
+using DinoSoft.CuCounters.Domain.Contracts.Infrastructure;
+using DinoSoft.CuCounters.Domain.Contracts.Model;
 using DinoSoft.CuCounters.Domain.Model;
 
 namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
-    public class CounterManager
+    internal class CounterManager : ICounterManager
     {
         private readonly ICounterRepository counterRepository;
 
@@ -14,7 +14,7 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
             this.counterRepository = counterRepository;
         }
 
-        public async Task<Counter> GetCounter(Guid id)
+        public async Task<ICounter> GetCounter(Guid id)
         {
             var counter = await counterRepository.Get(id);
             return new Counter(counter);

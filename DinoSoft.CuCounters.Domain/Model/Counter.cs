@@ -1,4 +1,5 @@
 ﻿using DinoSoft.CuCounters.Data.Model;
+using DinoSoft.CuCounters.Domain.Contracts.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DinoSoft.CuCounters.Domain.Model
 {
-    public class Counter
+    internal class Counter : ICounter
     {
         private readonly Data.Model.Counter counter;
 

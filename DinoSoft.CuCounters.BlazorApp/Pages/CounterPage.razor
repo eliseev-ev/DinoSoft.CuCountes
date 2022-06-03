@@ -1,8 +1,8 @@
 ﻿@page "/counter-groups/{GroupId:guid}/counters/{Id:guid}"
 @using DinoSoft.CuCounters.Common.Extensions
-@using DinoSoft.CuCounters.Domain.Model
-@using DinoSoft.CuCounters.Domain.Infrastructure
-@inject CounterManager counterManager
+@using DinoSoft.CuCounters.Domain.Contracts.Infrastructure
+@using DinoSoft.CuCounters.Domain.Contracts.Model
+@inject ICounterManager counterManager
 @inject NavigationService navigationService
 
 <LayoutView>
@@ -71,7 +71,7 @@
     [Parameter]
     public  Guid Id { get; set; }
 
-    public Counter counter { get; set; }
+    public ICounter counter { get; set; }
 
     private EditContext editContext;
 

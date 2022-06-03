@@ -1,7 +1,7 @@
 ﻿@page "/"
-@using DinoSoft.CuCounters.Domain.Model
-@using DinoSoft.CuCounters.Domain.Infrastructure
-@inject GroupManager groupManager
+@using DinoSoft.CuCounters.Domain.Contracts.Infrastructure
+@using DinoSoft.CuCounters.Domain.Contracts.Model
+@inject IGroupManager groupManager
 @inject NavigationService navigationService
 
 <LayoutView>
@@ -23,7 +23,7 @@
         @foreach (var counter in counterGroup.Counters)
         {
             <li class="list-group-flush border-bottom border-secondary rounded scrollarea main-bg">
-              <CounterSliderElement Counter=counter/>jhuhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+              <CounterSliderElement Counter=counter/>
             </li>
         }
     </ol>*@
@@ -31,7 +31,7 @@
 
 
 @code {
-    private DinoSoft.CuCounters.Domain.Model.Group counterGroup;
+    private IGroup counterGroup;
 
     protected override async Task OnInitializedAsync()
     {

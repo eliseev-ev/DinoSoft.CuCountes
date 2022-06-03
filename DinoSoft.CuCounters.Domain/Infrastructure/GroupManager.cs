@@ -1,11 +1,11 @@
 ﻿using DinoSoft.CuCounters.Data.Contracts.Repository;
-using DinoSoft.CuCounters.Data.Infrastructure;
-using DinoSoft.CuCounters.Data.Repository;
+using DinoSoft.CuCounters.Domain.Contracts.Infrastructure;
+using DinoSoft.CuCounters.Domain.Contracts.Model;
 using DinoSoft.CuCounters.Domain.Model;
 
 namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
-    public class GroupManager
+    internal class GroupManager : IGroupManager
     {
         private readonly ICounterGroupRepository counterGroupRepository;
 
@@ -14,19 +14,19 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
             this.counterGroupRepository = counterGroupRepository;
         }
 
-        public async Task<Group> GetRootCounterGroup()
+        public async Task<IGroup> GetRootCounterGroup()
         {
             var counterGroup = await counterGroupRepository.FirstOrDefault(x => !x.CounterGroupId.HasValue);
             return new Group(counterGroup);
         }
 
-        public async Task<Group> GetCounterGroup(Guid id)
+        public async Task<IGroup> GetCounterGroup(Guid id)
         {
             var counterGroup = await counterGroupRepository.Get(id);
             return new Group(counterGroup);
         }
 
-        public async Task<IEnumerable<Group>> GetGroups()
+        public async Task<IEnumerable<IGroup>> GetGroups()
         {
             var counterGroups = await counterGroupRepository.Get(x => true);
 

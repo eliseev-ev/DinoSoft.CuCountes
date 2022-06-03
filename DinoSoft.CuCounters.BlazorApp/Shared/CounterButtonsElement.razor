@@ -1,4 +1,4 @@
-﻿@using DinoSoft.CuCounters.Domain.Model
+﻿@using DinoSoft.CuCounters.Domain.Contracts.Model
 @inject NavigationService navigationService
 
 <div class="align-middle justify-content-end align-self-center">
@@ -17,7 +17,7 @@
 @code {
 	// Demonstrates how a parent component can supply parameters
 	[Parameter]
-	public Counter Model { get; set; }
+	public ICounter Model { get; set; }
 
 	[Parameter]
 	public RefreshToken RefreshToken { get; set; }

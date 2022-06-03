@@ -2,6 +2,7 @@
 using DinoSoft.CuCounters.Data;
 using DinoSoft.CuCounters.Data.Infrastructure;
 using DinoSoft.CuCounters.Data.Repository;
+using DinoSoft.CuCounters.Domain;
 using DinoSoft.CuCounters.Domain.Infrastructure;
 using DinoSoft.CuCounters.Modularity.Extension;
 using Microsoft.AspNetCore.Components.WebView.Maui;
@@ -28,15 +29,10 @@ namespace DinoSoft.CuCounters.BlazorApp
             // Infrastructure
             builder.Services.AddScoped<NavigationService>();
 
-            // Repositories && Managers
-            //builder.Services.AddScoped<CounterGroupRepository>();
-            //builder.Services.AddScoped<CounterRepository>();
-            //builder.Services.AddScoped<CounterActionRepository>();
-            builder.Services.AddScoped<GroupManager>();
-            builder.Services.AddScoped<CounterManager>();
-            //builder.Services.AddDbContext<DataContext>();
+            // Modules
 
             builder.Services.RegisterModule(new DataModule());
+            builder.Services.RegisterModule(new DomainModule());
 
             return builder.Build();
         }
