@@ -1,4 +1,5 @@
-﻿using DinoSoft.CuCounters.Data.Infrastructure;
+﻿using DinoSoft.CuCounters.Data.Contracts.Repository;
+using DinoSoft.CuCounters.Data.Infrastructure;
 using DinoSoft.CuCounters.Data.Repository;
 using DinoSoft.CuCounters.Domain.Model;
 
@@ -6,9 +7,9 @@ namespace DinoSoft.CuCounters.Domain.Infrastructure
 {
     public class CounterManager
     {
-        private readonly CounterRepository counterRepository;
+        private readonly ICounterRepository counterRepository;
 
-        public CounterManager(CounterRepository counterRepository)
+        public CounterManager(ICounterRepository counterRepository)
         {
             this.counterRepository = counterRepository;
         }

@@ -2,6 +2,7 @@
 using System.Text.Json;
 using DinoSoft.CuCounters.Data.Common.Extensions;
 using DinoSoft.CuCounters.Data.Common.Model;
+using DinoSoft.CuCounters.Data.Contracts.Repository;
 using DinoSoft.CuCounters.Data.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ namespace DinoSoft.CuCounters.Data.Common
     /// <summary>Абстрактный репозиторий.</summary>
     /// <typeparam name="TKey">Тип ключа.</typeparam>
     /// <typeparam name="TEntity">Тип сущности.</typeparam>
-    public abstract class AbstractRepository<TKey, TEntity>
+    internal abstract class AbstractRepository<TKey, TEntity> : IRepository<TKey, TEntity> 
         where TEntity : class, IIdentityModel<TKey>
     {
         private readonly DbContext dataContext;
