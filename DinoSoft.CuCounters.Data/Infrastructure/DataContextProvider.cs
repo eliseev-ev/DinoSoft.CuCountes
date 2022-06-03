@@ -2,6 +2,7 @@
 
 namespace DinoSoft.CuCounters.Data.Infrastructure
 {
+    [Obsolete("Больше не используется. Можно удалить")]
     public class DataContextProvider
     {
         private readonly string fileName;

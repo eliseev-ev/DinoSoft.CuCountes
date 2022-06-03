@@ -60,11 +60,11 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                     IconColor = "#0000FF",
                     Counters = new List<Counter>()
                     {
-                        GenCounter("#bd34b9", "bi-dice-3", "Карма"),
-                        GenCounter("#d82b37", "bi-arrow-through-heart", "Любовь"),
-                        GenCounter("#d2f589", "bi-bag", "Шопинг"),
-                        GenCounter("#89d0f5", "bi-chat-left-dots", "Общение"),
-                        GenCounter("#661919", "bi-cup-fill", "Чашек кофе"),                  
+                        CreateCounter("#bd34b9", "bi-dice-3", "Карма"),
+                        CreateCounter("#d82b37", "bi-arrow-through-heart", "Любовь"),
+                        CreateCounter("#d2f589", "bi-bag", "Шопинг"),
+                        CreateCounter("#89d0f5", "bi-chat-left-dots", "Общение"),
+                        CreateCounter("#661919", "bi-cup-fill", "Чашек кофе"),                  
                     },
                     Groups = new List<Group>
                     {
@@ -76,10 +76,10 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                             IconColor = "#0000FF",
                             Counters = new List<Counter>()
                             {
-                                GenCounter("#9da312", "bi-lightning-charge", "Сила"),
-                                GenCounter("#12F300", "bi-mortarboard", "Интелект"),
-                                GenCounter("#107380", "bi-palette", "Вдохновение"),
-                                GenCounter("#0f2780", "bi-journal-bookmark", "Занятий"),
+                                CreateCounter("#9da312", "bi-lightning-charge", "Сила"),
+                                CreateCounter("#12F300", "bi-mortarboard", "Интелект"),
+                                CreateCounter("#107380", "bi-palette", "Вдохновение"),
+                                CreateCounter("#0f2780", "bi-journal-bookmark", "Занятий"),
                             },
                             Groups = new List<Group>()
                         }
@@ -90,7 +90,7 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
             this.CounterGroups.AddRange(counterGroups);
             this.SaveChanges();
 
-            Counter GenCounter(string color, string iconName, string name) => new Counter()
+            Counter CreateCounter(string color, string iconName, string name) => new Counter()
             {
                 Id = Guid.NewGuid(),
                 Value = 1,
