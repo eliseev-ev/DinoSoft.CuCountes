@@ -1,19 +1,19 @@
-﻿using DinoSoft.CuCounters.Data.Model;
-using DinoSoft.CuCounters.Domain.Contracts.Model;
+﻿using DinoSoft.CuCounters.Domain.Contracts.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataModel = DinoSoft.CuCounters.Data.Contracts.Model;
 
 namespace DinoSoft.CuCounters.Domain.Model
 {
     internal class Counter : ICounter
     {
-        private readonly Data.Model.Counter counter;
+        private readonly DataModel.Counter counter;
 
-        public Counter(Data.Model.Counter counter)
+        public Counter(DataModel.Counter counter)
         {
             this.counter = counter;
         }
@@ -58,13 +58,13 @@ namespace DinoSoft.CuCounters.Domain.Model
 
         public DateTime? LastUpdated => counter.LastUpdated;
 
-        public List<CounterAction> CounterAction => counter.CounterActions;
+        public List<DataModel.CounterAction> CounterAction => counter.CounterActions;
 
         public void Act(Guid actionId)
         {
             // Нужно сделать домменую модель counterAction
             var action = counter.CounterActions.First(x => x.Id == actionId);
-            if (action.ActionType == Data.Model.CounterActionType.Add)
+            if (action.ActionType == DataModel.CounterActionType.Add)
             {
                 AddValue(action.Value);
             }

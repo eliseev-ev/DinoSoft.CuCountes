@@ -1,7 +1,6 @@
-﻿
-using DinoSoft.CuCounters.Data.Common.Model;
+﻿using DinoSoft.CuCounters.Data.Contracts.Common;
 
-namespace DinoSoft.CuCounters.Data.Model
+namespace DinoSoft.CuCounters.Data.Contracts.Model
 {
     public class Counter : IdNameModel
     {

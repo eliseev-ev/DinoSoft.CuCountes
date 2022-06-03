@@ -1,4 +1,4 @@
-﻿using DinoSoft.CuCounters.Data.Common.Model;
+﻿using DinoSoft.CuCounters.Data.Contracts.Common;
 using System.Linq.Expressions;
 
 namespace DinoSoft.CuCounters.Data.Contracts.Repository

@@ -1,21 +1,21 @@
-﻿using DinoSoft.CuCounters.Data.Model;
-using DinoSoft.CuCounters.Domain.Contracts.Model;
+﻿using DinoSoft.CuCounters.Domain.Contracts.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataModel = DinoSoft.CuCounters.Data.Contracts.Model;
 
 namespace DinoSoft.CuCounters.Domain.Model
 {
     internal class Group : IGroup
     {
-        private readonly Data.Model.Group group;
+        private readonly DataModel.Group group;
         private Lazy<IEnumerable<ICounter>> counters { get; }
         private Lazy<IEnumerable<IGroup>> groups { get; }
 
 
-        public Group(Data.Model.Group group)
+        public Group(DataModel.Group group)
         {
             this.group = group;
 

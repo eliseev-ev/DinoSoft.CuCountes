@@ -1,5 +1,5 @@
-﻿using DinoSoft.CuCounters.Data.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using DinoSoft.CuCounters.Data.Contracts.Model;
 
 namespace DinoSoft.CuCounters.Data.Infrastructure
 {
@@ -49,16 +49,16 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
 
         private void Populate()
         {
-            var counterGroups = new List<Data.Model.Group>();
+            var counterGroups = new List<Group>();
 
             counterGroups.Add(
-                new Data.Model.Group
+                new Group
                 {
                     Name = $"Папка 1",
                     Id = Guid.NewGuid(),
                     IconName = "bi-diamond",
                     IconColor = "#0000FF",
-                    Counters = new List<Data.Model.Counter>()
+                    Counters = new List<Counter>()
                     {
                         GenCounter("#bd34b9", "bi-dice-3", "Карма"),
                         GenCounter("#d82b37", "bi-arrow-through-heart", "Любовь"),
@@ -68,13 +68,13 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                     },
                     Groups = new List<Group>
                     {
-                        new Data.Model.Group
+                        new Group
                         {
                             Name = $"Подпапка",
                             Id = Guid.NewGuid(),
                             IconName = "bi-diamond",
                             IconColor = "#0000FF",
-                            Counters = new List<Data.Model.Counter>()
+                            Counters = new List<Counter>()
                             {
                                 GenCounter("#9da312", "bi-lightning-charge", "Сила"),
                                 GenCounter("#12F300", "bi-mortarboard", "Интелект"),
@@ -90,7 +90,7 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
             this.CounterGroups.AddRange(counterGroups);
             this.SaveChanges();
 
-            Data.Model.Counter GenCounter(string color, string iconName, string name) => new Data.Model.Counter()
+            Counter GenCounter(string color, string iconName, string name) => new Counter()
             {
                 Id = Guid.NewGuid(),
                 Value = 1,
@@ -98,25 +98,25 @@ namespace DinoSoft.CuCounters.Data.Infrastructure
                 IconName = iconName,
                 IconColor = color,
                 SortOrder = 0,
-                CounterActions = new List<Data.Model.CounterAction>
+                CounterActions = new List<CounterAction>
                 {
-                    new Data.Model.CounterAction()
+                    new CounterAction()
                     {
                         Id = Guid.NewGuid(),
                         Value = 1,
-                        ActionType = Data.Model.CounterActionType.Add
+                        ActionType = CounterActionType.Add
                     },
-                    new Data.Model.CounterAction()
+                    new CounterAction()
                     {
                         Id = Guid.NewGuid(),
                         Value = 5,
-                        ActionType = Data.Model.CounterActionType.Add
+                        ActionType = CounterActionType.Add
                     },
-                    new Data.Model.CounterAction()
+                    new CounterAction()
                     {
                         Id = Guid.NewGuid(),
                         Value = 1,
-                        ActionType = Data.Model.CounterActionType.Sub
+                        ActionType = CounterActionType.Sub
                     }
                 }
             };

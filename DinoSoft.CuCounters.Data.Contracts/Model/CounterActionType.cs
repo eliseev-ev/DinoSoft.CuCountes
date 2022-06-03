@@ -1,4 +1,4 @@
-﻿namespace DinoSoft.CuCounters.Data.Model
+﻿namespace DinoSoft.CuCounters.Data.Contracts.Model
 {
     public enum CounterActionType
     {

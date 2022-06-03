@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using DinoSoft.CuCounters.Data.Model;
 
 namespace DinoSoft.CuCounters.Data.Infrastructure
 {

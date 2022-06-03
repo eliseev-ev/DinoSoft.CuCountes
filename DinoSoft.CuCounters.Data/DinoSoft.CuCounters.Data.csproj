@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DinoSoft.CuCounters.Common\DinoSoft.CuCounters.Common.csproj" />
+    <ProjectReference Include="..\DinoSoft.CuCounters.Data.Contracts\DinoSoft.CuCounters.Data.Contracts.csproj" />
     <ProjectReference Include="..\DinoSoft.CuCounters.Modularity\DinoSoft.CuCounters.Modularity.csproj" />
   </ItemGroup>
 

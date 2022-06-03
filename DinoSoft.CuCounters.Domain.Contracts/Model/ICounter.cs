@@ -1,4 +1,4 @@
-﻿using DinoSoft.CuCounters.Data.Model;
+﻿using DinoSoft.CuCounters.Data.Contracts.Model;
 
 namespace DinoSoft.CuCounters.Domain.Contracts.Model
 {

@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Text.Json;
-using DinoSoft.CuCounters.Data.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace DinoSoft.CuCounters.Data.Common.Extensions
 {
