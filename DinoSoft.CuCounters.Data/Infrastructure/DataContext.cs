@@ -3,7 +3,7 @@ using DinoSoft.CuCounters.Data.Contracts.Model;
 
 namespace DinoSoft.CuCounters.Data.Infrastructure
 {
-    public class DataContext : DbContext
+    internal class DataContext : DbContext
     {
         public DataContext()
         {
