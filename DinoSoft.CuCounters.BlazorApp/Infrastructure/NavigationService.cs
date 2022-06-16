@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DinoSoft.CuCounters.BlazorApp.Infrastructure
 {
-    internal class NavigationService
+    internal class NavigationService : INavigationService
     {
         private readonly NavigationManager navigationManager;
 
@@ -17,10 +17,6 @@ namespace DinoSoft.CuCounters.BlazorApp.Infrastructure
             this.navigationManager = navigationManager;
         }
 
-        /// <summary>
-        /// Перенаправить на страницу.
-        /// </summary>
-        /// <param name="link"></param>
         public void NavigateTo(string link)
         {
             navigationManager.NavigateTo(Links.Service.NavigationPage(link));
