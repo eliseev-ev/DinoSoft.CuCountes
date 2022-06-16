@@ -26,11 +26,13 @@ namespace DinoSoft.CuCounters.BlazorApp
             builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
 
+            // Infrastructure
+            builder.Services.AddScoped<NavigationService>();
+
             // Modules
 
             builder.Services.RegisterModule(new DataModule());
             builder.Services.RegisterModule(new DomainModule());
-            builder.Services.RegisterModule(new BlazorModule());
 
             return builder.Build();
         }
